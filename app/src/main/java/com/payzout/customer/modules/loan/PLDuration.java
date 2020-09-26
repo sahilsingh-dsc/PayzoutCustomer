@@ -2,12 +2,13 @@ package com.payzout.customer.modules.loan;
 
 public class PLDuration {
     private int id;
-    private int duration;
+    private String duration;
 
     public PLDuration() {
     }
 
-    public PLDuration(int id, int duration) {
+
+    public PLDuration(int id, String duration) {
         this.id = id;
         this.duration = duration;
     }
@@ -20,11 +21,11 @@ public class PLDuration {
         this.id = id;
     }
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 }

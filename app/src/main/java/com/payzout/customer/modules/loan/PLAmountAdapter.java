@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +32,7 @@ public class PLAmountAdapter extends RecyclerView.Adapter<PLAmountAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull PLAmountAdapter.ViewHolder holder, int position) {
-
+        holder.tvAmount.setText(""+plAmountList.get(position).getAmount());
     }
 
     @Override
@@ -41,10 +42,12 @@ public class PLAmountAdapter extends RecyclerView.Adapter<PLAmountAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-
+        private TextView tvAmount;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            tvAmount = itemView.findViewById(R.id.tvAmount);
         }
     }
 }
