@@ -29,7 +29,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.payzout.customer.R;
-import com.payzout.customer.common.MainActivity;
+import com.payzout.customer.modules.loan.PLActivity;
 import com.payzout.customer.utils.Constant;
 
 import java.util.concurrent.TimeUnit;
@@ -204,7 +204,7 @@ public class CodeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void goToHome() {
-        Intent intent = new Intent(CodeActivity.this, MainActivity.class);
+        Intent intent = new Intent(CodeActivity.this, PLActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

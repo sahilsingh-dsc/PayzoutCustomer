@@ -2,4 +2,10 @@
     <string name="app_name">Payzout</string>
     <string name="loading_awesomeness">Loading awesomeness...</string>
     <string name="code_notice">Please enter a 6 digit code received on phone number</string>
+    <string name="in_india">in India</string>
+    <string name="made_with">Made with</string>
+    <string name="home">Home</string>
+    <string name="_20_000">₹20,000</string>
+    <string name="available_credit_limit">Available Credit Limit</string>
+    <string name="_50_000">₹50,000</string>
 </resources>

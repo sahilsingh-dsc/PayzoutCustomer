@@ -1,26 +1,29 @@
-package com.payzout.customer.common;
+package com.payzout.customer.modules.loan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.widget.ImageView;
+import android.view.View;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.payzout.customer.R;
 
-public class MainActivity extends AppCompatActivity {
+public class PLActivity extends AppCompatActivity implements View.OnClickListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_pl);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         initView();
     }
 
     private void initView() {
+
     }
 
+    @Override
+    public void onClick(View view) {
+
+    }
 }

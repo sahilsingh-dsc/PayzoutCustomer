@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.payzout.customer.R;
 import com.payzout.customer.auth.PhoneActivity;
+import com.payzout.customer.modules.loan.PLActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -51,7 +52,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void gotoMain() {
-        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        Intent intent = new Intent(SplashActivity.this, PLActivity.class);
         startActivity(intent);
         finish();
     }

@@ -29,7 +29,7 @@
             android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:textColor="@color/colorTextH1"
-            android:text="Made with" />
+            android:text="@string/made_with" />
 
         <ImageView
             android:layout_width="20dp"
@@ -44,7 +44,7 @@
             android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:textColor="@color/colorTextH1"
-            android:text="in Indore" />
+            android:text="@string/in_india" />
 
     </LinearLayout>
 
