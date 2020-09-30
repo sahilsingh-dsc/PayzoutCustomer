@@ -64,11 +64,14 @@
                     android:textColor="@color/colorTextH1" />
 
                 <EditText
+                    android:id="@+id/etFirstName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/bg_textbox"
                     android:fontFamily="@font/montserrat_bold"
                     android:hint="First Name"
+                    android:inputType="textCapSentences"
+
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:textSize="16sp" />
@@ -90,11 +93,13 @@
                     android:textColor="@color/colorTextH1" />
 
                 <EditText
+                    android:id="@+id/etLastName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/bg_textbox"
                     android:fontFamily="@font/montserrat_bold"
                     android:hint="Last Name"
+                    android:inputType="textCapSentences"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:textSize="16sp" />
@@ -116,6 +121,7 @@
                     android:textColor="@color/colorTextH1" />
 
                 <EditText
+                    android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/bg_textbox"
@@ -147,6 +153,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tvMale"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_margin="2dp"
@@ -158,6 +165,7 @@
                         android:text="Male" />
 
                     <TextView
+                        android:id="@+id/tvFemale"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_margin="2dp"
@@ -171,7 +179,28 @@
                 </LinearLayout>
 
             </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Education Status"
+                    android:textColor="@color/colorTextH1" />
+
+                <Spinner
+                    android:id="@+id/spinnerEducation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_textbox"
+                    />
+
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -192,6 +221,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tvSingle"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_margin="2dp"
@@ -203,6 +233,7 @@
                         android:text="Single" />
 
                     <TextView
+                        android:id="@+id/tvMarried"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
                         android:layout_margin="2dp"
@@ -232,11 +263,14 @@
                     android:textColor="@color/colorTextH1" />
 
                 <EditText
+                    android:id="@+id/etDOB"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/bg_textbox"
+                    android:focusable="false"
                     android:fontFamily="@font/montserrat_bold"
                     android:hint="DD/MM/YYYY"
+                    android:inputType="date"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:textSize="16sp" />
@@ -258,11 +292,13 @@
                     android:textColor="@color/colorTextH1" />
 
                 <EditText
+                    android:id="@+id/etPanCardNo"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/bg_textbox"
                     android:fontFamily="@font/montserrat_bold"
                     android:hint="XXXXX1212X"
+                    android:maxLength="12"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:textSize="16sp" />
@@ -284,11 +320,14 @@
                     android:textColor="@color/colorTextH1" />
 
                 <EditText
+                    android:id="@+id/etAadharCardNo"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/bg_textbox"
                     android:fontFamily="@font/montserrat_bold"
                     android:hint="1234 1234 1234"
+                    android:inputType="number"
+                    android:maxLength="12"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:textSize="16sp" />
@@ -310,12 +349,15 @@
                     android:textColor="@color/colorTextH1" />
 
                 <EditText
+                    android:id="@+id/etFatherName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/bg_textbox"
                     android:fontFamily="@font/montserrat_bold"
                     android:hint="Father's name"
+                    android:inputType="textCapSentences"
                     android:paddingStart="16dp"
+                    android:maxLength="15"
                     android:paddingEnd="16dp"
                     android:textSize="16sp" />
 
@@ -337,13 +379,16 @@
                     android:textColor="@color/colorTextH1" />
 
                 <EditText
+                    android:id="@+id/etMotherName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/bg_textbox"
                     android:fontFamily="@font/montserrat_bold"
                     android:hint="Mother's name"
+                    android:inputType="textCapSentences"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
+                    android:maxLength="15"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -354,7 +399,7 @@
     </ScrollView>
 
     <TextView
-        android:id="@+id/tvIAgree"
+        android:id="@+id/tvSubmitDetails"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="16dp"

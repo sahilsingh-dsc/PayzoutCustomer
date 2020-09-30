@@ -33,7 +33,7 @@ public class KycActivity extends AppCompatActivity implements View.OnClickListen
             Intent intent = new Intent(KycActivity.this, BasicDetailsActivity.class);
             startActivity(intent);
 
-            Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
         }
     }
 }
