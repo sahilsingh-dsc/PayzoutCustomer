@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".common.PermissionActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:src="@drawable/payzout_app"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_verified_user_24"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorTrue"
+                    android:layout_marginStart="4dp"
+                    android:text="Your data is 100% safe"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:layout_marginBottom="8dp"
+                android:text="Permissions"
+                android:textColor="@color/colorTextH1"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:layout_marginBottom="8dp"
+                android:text="Hi there"
+                android:textColor="@color/colorTextH1"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="For the purpose of credit risk assessment and to fasilitate faster loan disbursal, we require the following permissions from you."
+                android:textColor="@color/colorTextH2"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20sp"
+                    android:src="@drawable/ic_iphone"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/per_phone_title"
+                    android:textColor="@color/colorTextH1"
+                    android:textSize="14sp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/montserrat_bold"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/per_phone_desc"
+                android:textSize="12sp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/montserrat"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20sp"
+                    android:src="@drawable/ic_user"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/per_contact_title"
+                    android:textColor="@color/colorTextH1"
+                    android:textSize="14sp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/montserrat_bold"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/per_contact_desc"
+                android:textSize="12sp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/montserrat"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20sp"
+                    android:src="@drawable/ic_placeholder"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/per_location_title"
+                    android:textColor="@color/colorTextH1"
+                    android:textSize="14sp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/montserrat_bold"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/per_location_desc"
+                android:textSize="12sp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/montserrat"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20sp"
+                    android:src="@drawable/ic_photo_camera"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/per_camera_title"
+                    android:textColor="@color/colorTextH1"
+                    android:textSize="14sp"
+                    android:layout_marginStart="4dp"
+                    android:fontFamily="@font/montserrat_bold"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/per_camera_desc"
+                android:textSize="12sp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/montserrat"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/per_consent"
+            android:textColor="@color/colorTextH2"
+            android:textSize="14sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp" />
+
+        <CheckBox
+            android:id="@+id/checkAgreement"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:fontFamily="@font/montserrat"
+            android:textColor="@color/colorTextH2"
+            android:layout_margin="16dp"
+            android:textSize="12sp"
+            android:text="@string/per_agreement"/>
+
+        <TextView
+            android:id="@+id/tvIAgree"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:background="@drawable/bg_button_disabled"
+            android:textColor="@color/colorTextH3"
+            android:gravity="center"
+            android:enabled="false"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="I Agree"/>
+
+    </LinearLayout>
+
+</LinearLayout>

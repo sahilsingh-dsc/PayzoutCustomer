@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.payzout.customer.R;
-
 import java.util.List;
 
 public class PLDurationAdapter extends RecyclerView.Adapter<PLDurationAdapter.PLViewHolder> {
@@ -33,7 +32,27 @@ public class PLDurationAdapter extends RecyclerView.Adapter<PLDurationAdapter.PL
 
     @Override
     public void onBindViewHolder(@NonNull PLDurationAdapter.PLViewHolder holder, int position) {
-        holder.tvDuration.setText(plDurationList.get(position).getDuration());
+        PLDuration plDuration = plDurationList.get(position);
+        if (plDuration.getType() == PLDuration.DURATION_TYPE_DAYS) {
+            String duration = plDurationList.get(position).getDuration() +" "+ context.getResources().getString(R.string.str_days);
+            holder.tvDuration.setText(duration);
+        } else if (plDuration.getType() == PLDuration.DURATION_TYPE_MONTHS) {
+            String duration = plDurationList.get(position).getDuration() +" "+ context.getResources().getString(R.string.str_months);
+            holder.tvDuration.setText(duration);
+        }
+
+        if (plDuration.getStatus() == PLDuration.LOAN_STATUS_DURATION_LOCKED) {
+            holder.tvDuration.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_lock_24, 0);
+        } else if (plDuration.getStatus() == PLDuration.LOAN_STATUS_DURATION_OPENED) {
+            holder.tvDuration.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_lock_open_24, 0);
+        }
+
+        if (plDuration.getStatus() == PLDuration.LOAN_STATUS_DURATION_LOCKED) {
+            holder.tvDuration.setEnabled(false);
+        } else if (plDuration.getStatus() == PLDuration.LOAN_STATUS_DURATION_OPENED) {
+            holder.tvDuration.setEnabled(true);
+        }
+
     }
 
     @Override

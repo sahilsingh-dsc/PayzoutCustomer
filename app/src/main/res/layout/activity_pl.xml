@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,37 +14,37 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="60dp"
-            android:layout_marginBottom="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            app:cardElevation="16dp"
-            app:cardCornerRadius="8dp">
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="16dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:padding="16dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorTextH2"
                     android:fontFamily="@font/montserrat"
-                    android:text="@string/available_credit_limit"/>
+                    android:gravity="center"
+                    android:text="@string/available_credit_limit"
+                    android:textColor="@color/colorTextH2"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textSize="30sp"
-                    android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/_50_000"/>
+                    android:gravity="center"
+                    android:text="@string/_50_000"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="30sp" />
 
             </LinearLayout>
 
@@ -54,151 +53,205 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:orientation="vertical"
-            android:background="@drawable/bg_curved_toolbar">
+            android:background="@drawable/bg_curved_toolbar"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Instant Personal Loan"
-                android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
-                android:textColor="@color/colorTextH3"
                 android:fontFamily="@font/montserrat_bold"
-                android:textSize="20sp"/>
+                android:gravity="center"
+                android:text="Instant Personal Loan"
+                android:textColor="@color/colorTextH3"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
     </FrameLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:textColor="@color/colorTextH1"
                     android:fontFamily="@font/montserrat"
-                    android:text="Choose Loan Amount:"/>
+                    android:padding="8dp"
+                    android:text="Choose Loan Amount:"
+                    android:textColor="@color/colorTextH1" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerAmount"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="16dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:padding="8dp"
-                    android:textColor="@color/colorTextH1"
                     android:fontFamily="@font/montserrat"
-                    android:text="Choose Duration:"/>
+                    android:padding="8dp"
+                    android:text="Choose Duration:"
+                    android:textColor="@color/colorTextH1" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerDuration"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:orientation="vertical">
-
-            <TextView
+            
+            <View
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:textColor="@color/colorTextH1"
-                android:fontFamily="@font/montserrat"
-                android:text="Total Interest"/>
-            <TextView
-                android:id="@+id/tvInterest"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@color/colorEditTextBox"/>
 
-                android:fontFamily="@font/montserrat"
-                android:text="₹3,000"/>
-        </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:orientation="vertical">
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Disbursal Amount:"
+                    android:textColor="@color/colorTextH1" />
+
+                <TextView
+                    android:id="@+id/tvDisbursalAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="₹3,000" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:textColor="@color/colorTextH1"
                     android:fontFamily="@font/montserrat"
-                    android:text="Max Interest"/>
+                    android:text="Loan Duration:"/>
                 <TextView
-                    android:id="@+id/tvMaxInterest"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvLoanDuration"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-
                     android:fontFamily="@font/montserrat"
                     android:text="₹3,000"/>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvContinue"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:textSize="16sp"
-                android:fontFamily="@font/montserrat_bold"
-                android:background="@drawable/bg_button"
-                android:textColor="@color/colorTextH3"
-                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:orientation="horizontal">
 
-                android:text="Continue"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorTextH1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Repayment Amount:"/>
+                <TextView
+                    android:id="@+id/tvRepaymentAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="₹3,000"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/colorTextH1"
+                    android:fontFamily="@font/montserrat"
+                    android:text="Repayment Date:"/>
+                <TextView
+                    android:id="@+id/tvRepaymentDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat"
+                    android:text="24-05-2020"/>
+            </LinearLayout>
+
         </LinearLayout>
-
-
     </ScrollView>
+
+    <TextView
+        android:id="@+id/tvContinue"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_button_disabled"
+        android:enabled="false"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:text="Continue"
+        android:textColor="@color/colorTextH3"
+        android:textSize="16sp" />
+
 </LinearLayout>

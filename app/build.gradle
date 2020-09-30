@@ -42,5 +42,16 @@ dependencies {
     // google material design
     implementation 'com.google.android.material:material:1.2.0-alpha02'
 
+    // auto permission
+    implementation 'com.nabinbhandari.android:permissions:3.8'
+
+    //dex
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //retrofit android
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
+
+
 
 }

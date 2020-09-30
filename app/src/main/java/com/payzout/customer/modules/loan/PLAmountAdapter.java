@@ -32,7 +32,21 @@ public class PLAmountAdapter extends RecyclerView.Adapter<PLAmountAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull PLAmountAdapter.ViewHolder holder, int position) {
-        holder.tvAmount.setText(""+plAmountList.get(position).getAmount());
+        PLAmount plAmount = plAmountList.get(position);
+        holder.tvAmount.setText(String.valueOf(plAmount.getAmount()));
+
+        if (plAmount.getStatus() == PLAmount.LOAN_STATUS_AMOUNT_LOCKED) {
+            holder.tvAmount.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_lock_24, 0);
+        } else if (plAmount.getStatus() == PLAmount.LOAN_STATUS_AMOUNT_OPENED) {
+            holder.tvAmount.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_lock_open_24, 0);
+        }
+
+        if (plAmount.getStatus() == PLAmount.LOAN_STATUS_AMOUNT_LOCKED) {
+            holder.tvAmount.setEnabled(false);
+        } else if (plAmount.getStatus() == PLAmount.LOAN_STATUS_AMOUNT_OPENED) {
+            holder.tvAmount.setEnabled(true);
+        }
+
     }
 
     @Override

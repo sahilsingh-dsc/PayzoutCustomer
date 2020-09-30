@@ -16,9 +16,10 @@ import java.util.List;
 
 public class PLActivity extends AppCompatActivity implements View.OnClickListener {
 
-private RecyclerView recyclerAmount;
-private RecyclerView recyclerDuration;
+    private RecyclerView recyclerAmount;
+    private RecyclerView recyclerDuration;
     private TextView tvContinue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +45,12 @@ private RecyclerView recyclerDuration;
 
     private void setPLDurationRecycler() {
         List<PLDuration> plDurationList = new ArrayList<>();
-        plDurationList.add(new PLDuration(1, "3 Months"));
-        plDurationList.add(new PLDuration(1, "6 Months"));
-        plDurationList.add(new PLDuration(1, "9 Months"));
-        plDurationList.add(new PLDuration(1, "12 Months"));
-        plDurationList.add(new PLDuration(1, "24 Months"));
-        plDurationList.add(new PLDuration(1, "36 Months"));
+        plDurationList.add(new PLDuration(1, 7, 1, 1));
+        plDurationList.add(new PLDuration(2, 14, 1, 1));
+        plDurationList.add(new PLDuration(3, 1, 2, 0));
+        plDurationList.add(new PLDuration(4, 2, 2, 0));
+        plDurationList.add(new PLDuration(5, 3, 2, 0));
+        plDurationList.add(new PLDuration(6, 6, 2, 0));
 
         PLDurationAdapter plDurationAdapter = new PLDurationAdapter(PLActivity.this, plDurationList);
         recyclerDuration.setAdapter(plDurationAdapter);
@@ -58,15 +59,15 @@ private RecyclerView recyclerDuration;
     private void setPLAmountRecycler() {
         List<PLAmount> plAmountList = new ArrayList<>();
 
-        plAmountList.add(new PLAmount(1, 3000));
-        plAmountList.add(new PLAmount(1, 5000));
-        plAmountList.add(new PLAmount(1, 7000));
-        plAmountList.add(new PLAmount(1, 10000));
-        plAmountList.add(new PLAmount(1, 15000));
-        plAmountList.add(new PLAmount(1, 20000));
-        plAmountList.add(new PLAmount(1, 30000));
-        plAmountList.add(new PLAmount(1, 40000));
-        plAmountList.add(new PLAmount(1, 50000));
+        plAmountList.add(new PLAmount(1, 3000, 1));
+        plAmountList.add(new PLAmount(1, 5000, 1));
+        plAmountList.add(new PLAmount(1, 7000, 1));
+        plAmountList.add(new PLAmount(1, 10000, 0));
+        plAmountList.add(new PLAmount(1, 15000, 0));
+        plAmountList.add(new PLAmount(1, 20000, 0));
+        plAmountList.add(new PLAmount(1, 30000, 0));
+        plAmountList.add(new PLAmount(1, 40000, 0));
+        plAmountList.add(new PLAmount(1, 50000, 0));
 
         PLAmountAdapter plAmountAdapter = new PLAmountAdapter(PLActivity.this, plAmountList);
         recyclerAmount.setAdapter(plAmountAdapter);
@@ -74,9 +75,9 @@ private RecyclerView recyclerDuration;
 
     @Override
     public void onClick(View view) {
-        if (view == tvContinue){
+        if (view == tvContinue) {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            startActivity(new Intent(PLActivity.this, EKYCActivity.class));
+            //startActivity(new Intent(PLActivity.this, EKYCActivity.class));
         }
     }
 }

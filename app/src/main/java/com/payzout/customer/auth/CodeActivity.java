@@ -29,10 +29,18 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 import com.payzout.customer.R;
+import com.payzout.customer.apis.APIClient;
+import com.payzout.customer.apis.AuthInterface;
+import com.payzout.customer.auth.model.CheckUser;
+import com.payzout.customer.modules.kyc.KycActivity;
 import com.payzout.customer.modules.loan.PLActivity;
 import com.payzout.customer.utils.Constant;
 
 import java.util.concurrent.TimeUnit;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CodeActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -52,6 +60,8 @@ public class CodeActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout lhAutoVerify;
     private FrameLayout frameCode;
     private String phoneNumber;
+
+    private AuthInterface authInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +85,7 @@ public class CodeActivity extends AppCompatActivity implements View.OnClickListe
         tvResendCode.setOnClickListener(this);
         ivGoBack.setOnClickListener(this);
 
+        authInterface = APIClient.getRetrofitInstance().create(AuthInterface.class);
         phoneNumber = getIntent().getStringExtra("phoneNumber");
 
         setNotice();
@@ -191,7 +202,7 @@ public class CodeActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             Log.e(TAG, "onComplete: ");
                             Snackbar.make(frameCode, "Successful", Snackbar.LENGTH_LONG).show();
-                            goToHome();
+                            checkUser(firebaseAuth.getCurrentUser().getUid());
                         } else {
                             if (task.getException() instanceof
                                     FirebaseAuthInvalidCredentialsException) {
@@ -203,8 +214,36 @@ public class CodeActivity extends AppCompatActivity implements View.OnClickListe
                 });
     }
 
-    private void goToHome() {
+    private void checkUser(String uid) {
+        Call<CheckUser> checkUserCall = authInterface.checkUser(uid);
+        checkUserCall.enqueue(new Callback<CheckUser>() {
+            @Override
+            public void onResponse(Call<CheckUser> call, Response<CheckUser> response) {
+                Log.e(TAG, "onResponse: "+response.code() + response.message());
+                if (response.code() == 200) {
+                    gotoLoanPage();
+                } else if (response.code() == 400) {
+                    gotoLoanApplication();
+                } else {
+                    Toast.makeText(CodeActivity.this, "Something went wrong " +response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CheckUser> call, Throwable t) {
+                Log.e(TAG, "onFailure: "+t.getMessage());
+            }
+        });
+    }
+
+    private void gotoLoanPage() {
         Intent intent = new Intent(CodeActivity.this, PLActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
+    private void gotoLoanApplication() {
+        Intent intent = new Intent(CodeActivity.this, KycActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
