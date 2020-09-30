@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.payzout.customer.R;
 import com.payzout.customer.modules.kyc.basic.BasicDetailsActivity;
@@ -31,6 +32,8 @@ public class KycActivity extends AppCompatActivity implements View.OnClickListen
         if (view == lvBasicDetails) {
             Intent intent = new Intent(KycActivity.this, BasicDetailsActivity.class);
             startActivity(intent);
+
+            Toast.makeText(this, "Hello", Toast.LENGTH_SHORT).show();
         }
     }
 }
