@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -195,6 +196,28 @@
 
                 <Spinner
                     android:id="@+id/spinnerEducation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_textbox"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="Native Language"
+                    android:textColor="@color/colorTextH1" />
+
+                <Spinner
+                    android:id="@+id/spinnerLanguage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_textbox"
@@ -412,5 +435,6 @@
         android:text="Submit details"
         android:textColor="@color/colorTextH3"
         android:textSize="16sp" />
+
 
 </LinearLayout>

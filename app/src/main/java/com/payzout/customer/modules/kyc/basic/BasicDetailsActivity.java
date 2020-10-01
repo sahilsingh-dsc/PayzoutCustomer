@@ -2,7 +2,9 @@ package com.payzout.customer.modules.kyc.basic;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -16,14 +18,18 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.payzout.customer.R;
 import com.payzout.customer.modules.kyc.EductionAdapter;
+import com.payzout.customer.modules.kyc.KycActivity;
+import com.payzout.customer.modules.kyc.LanguageAdapter;
+import com.payzout.customer.modules.kyc.basic.presenter.BasicDetailPresenter;
 
 import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class BasicDetailsActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class BasicDetailsActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener, BasicDetailPresenter.IBasicDetail {
     private EditText etFirstName;
     private EditText etLastName;
     private EditText etEmail;
@@ -37,10 +43,9 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
     private TextView tvFemale;
     private TextView tvSingle;
     private TextView tvMarried;
-    private Calendar calendar;
-    private DatePickerDialog datePickerDialog;
-    private EductionAdapter eductionAdapter;
-    private String spinner_selected_item;
+    private int spinnerSelectedEducation = 0;
+    private int spinnerSelectedLanguage = 0;
+    private LottieAnimationView lottieAnimation;
     private boolean et1State = false;
     private boolean et2State = false;
     private boolean et3State = false;
@@ -49,18 +54,19 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
     private boolean et6State = false;
     private boolean et7State = false;
     private boolean et8State = false;
-    private Spinner spinnerEducation;
-    private int male = 0;
-    private int female = 0;
-    private int married = 0;
-    private int single = 0;
-    private String[] status = {"", "Higher Secondary", "Senior Secondary", "Under Graduation", "Post Graduation"};
+    private int genderSelect = 0;
+    private int maritalStatus = 0;
+    private String[] educationStatus = {"", "Higher Secondary", "Senior Secondary", "Under Graduation", "Post Graduation"};
+    private String[] language = {"", "English", "Hindi", "Others"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_basic_details);
 
         initViews();
+        doMaleSelected();
+        doSingleSelected();
     }
 
     private void initViews() {
@@ -78,93 +84,76 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
         tvFemale = findViewById(R.id.tvFemale);
         tvSingle = findViewById(R.id.tvSingle);
         tvMarried = findViewById(R.id.tvMarried);
-        spinnerEducation = findViewById(R.id.spinnerEducation);
+        Spinner spinnerEducation = findViewById(R.id.spinnerEducation);
+        Spinner spinnerLanguage = findViewById(R.id.spinnerLanguage);
+
 
         textValidation();
 
-        eductionAdapter = new EductionAdapter(BasicDetailsActivity.this, status);
+        EductionAdapter eductionAdapter = new EductionAdapter(BasicDetailsActivity.this, educationStatus);
         spinnerEducation.setAdapter(eductionAdapter);
 
-
+        LanguageAdapter languageAdapter = new LanguageAdapter(BasicDetailsActivity.this, language);
+        spinnerLanguage.setAdapter(languageAdapter);
 
 
         tvSubmitDetails.setOnClickListener(this);
         spinnerEducation.setOnItemSelectedListener(this);
+        spinnerLanguage.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (position == 0) {
+                    spinnerSelectedLanguage = 0;
+                    return;
+                } else if (position == 1) {
+                    spinnerSelectedLanguage = 1;
+                    return;
+                } else if (position == 2) {
+                    spinnerSelectedLanguage = 2;
+                    return;
+                } else if (position == 3) {
+                    spinnerSelectedLanguage = 3;
+                    return;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
         tvMale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                male = 1;
-                tvMale.setBackground(getResources().getDrawable(R.drawable.bg_button));
-                tvMale.setEnabled(true);
-                tvMale.setTextColor(getResources().getColor(R.color.colorTextH3));
-
-
-                female = 1;
-                tvFemale.setBackground(getResources().getDrawable(R.drawable.bg_cards_unselected));
-                tvFemale.setTextColor(getResources().getColor(R.color.colorTextH2));
+                doMaleSelected();
 
             }
         });
         tvFemale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                female = 2;
-                tvFemale.setBackground(getResources().getDrawable(R.drawable.bg_button));
-                tvFemale.setTextColor(getResources().getColor(R.color.colorTextH3));
-
-
-                male = 0;
-                tvMale.setBackground(getResources().getDrawable(R.drawable.bg_cards_unselected));
-                tvMale.setTextColor(getResources().getColor(R.color.colorTextH2));
+                doFemaleSelected();
             }
         });
-
         tvSingle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                single = 2;
-                tvSingle.setBackground(getResources().getDrawable(R.drawable.bg_button));
-                tvSingle.setTextColor(getResources().getColor(R.color.colorTextH3));
-
-                married = 0;
-                tvMarried.setBackground(getResources().getDrawable(R.drawable.bg_cards_unselected));
-                tvMarried.setTextColor(getResources().getColor(R.color.colorTextH2));
+                doSingleSelected();
             }
         });
-
         tvMarried.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                married = 1;
-                tvMarried.setBackground(getResources().getDrawable(R.drawable.bg_button));
-                tvMarried.setTextColor(getResources().getColor(R.color.colorTextH3));
-
-                single = 0;
-                tvSingle.setBackground(getResources().getDrawable(R.drawable.bg_cards_unselected));
-                tvSingle.setTextColor(getResources().getColor(R.color.colorTextH2));
+                doMarriedSelected();
             }
         });
-            etDOB.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    calendar = Calendar.getInstance();
-                    int day = calendar.get(Calendar.DAY_OF_MONTH);
-                    int month = calendar.get(Calendar.MONTH);
-                    int year = calendar.get(Calendar.YEAR);
-                    datePickerDialog = new DatePickerDialog(BasicDetailsActivity.this, new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
-                            if (i1+1<=9){
-                                etDOB.setText(i2 + "/" + "0"+(i1+1) + "/" + i);
-                            }else{
-                                etDOB.setText(i2 + "/" +(i1+1) + "/" + i);
-                            }
-
-                        }
-                    }, day, month, year);
-                    datePickerDialog.show();
-                }
-            });
+        etDOB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDatePicker();
+            }
+        });
     }
 
     private void textValidation() {
@@ -377,6 +366,15 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
         });
     }
 
+
+    @Override
+    public void onClick(View v) {
+        if (v == tvSubmitDetails) {
+            doUiValidation();
+        }
+
+    }
+
     private void doUiValidation() {
         String firstName = etFirstName.getText().toString();
 
@@ -438,16 +436,10 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
             etMotherName.setError("Mother Name Required");
             return;
         }
-
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v == tvSubmitDetails) {
-            doUiValidation();
-        }
-
+        lottieAnimation.playAnimation();
+        BasicDetailPresenter basicDetailPresenter = new BasicDetailPresenter(BasicDetailsActivity.this, BasicDetailsActivity.this);
+        basicDetailPresenter.postDetails(firstName, lastName, email, genderSelect, dob,
+                maritalStatus, panCard, aadharNo, fatherName, motherName, spinnerSelectedLanguage, spinnerSelectedEducation);
     }
 
     private void enableButton(Boolean inputState) {
@@ -462,11 +454,99 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            spinner_selected_item = status[position];
+
+        if (position == 1) {
+            spinnerSelectedEducation = 1;
+            return;
+        } else if (position == 2) {
+            spinnerSelectedEducation = 2;
+            return;
+        } else if (position == 3) {
+            spinnerSelectedEducation = 3;
+
+            return;
+        } else if (position == 4) {
+            spinnerSelectedEducation = 4;
+
+            return;
+        } else {
+            spinnerSelectedEducation = 0;
+            return;
+        }
+
+
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+    }
 
+    private void doMaleSelected() {
+        genderSelect = 1;
+        tvMale.setBackground(getResources().getDrawable(R.drawable.bg_button));
+        tvMale.setEnabled(true);
+        tvMale.setTextColor(getResources().getColor(R.color.colorTextH3));
+        tvFemale.setBackground(getResources().getDrawable(R.drawable.bg_cards_unselected));
+        tvFemale.setTextColor(getResources().getColor(R.color.colorTextH2));
+    }
+
+    private void doFemaleSelected() {
+        genderSelect = 2;
+        tvFemale.setBackground(getResources().getDrawable(R.drawable.bg_button));
+        tvFemale.setTextColor(getResources().getColor(R.color.colorTextH3));
+        tvMale.setBackground(getResources().getDrawable(R.drawable.bg_cards_unselected));
+        tvMale.setTextColor(getResources().getColor(R.color.colorTextH2));
+    }
+
+    private void doSingleSelected() {
+        maritalStatus = 2;
+        tvSingle.setBackground(getResources().getDrawable(R.drawable.bg_button));
+        tvSingle.setTextColor(getResources().getColor(R.color.colorTextH3));
+        tvMarried.setBackground(getResources().getDrawable(R.drawable.bg_cards_unselected));
+        tvMarried.setTextColor(getResources().getColor(R.color.colorTextH2));
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void doMarriedSelected() {
+        maritalStatus = 1;
+        tvMarried.setBackground(getResources().getDrawable(R.drawable.bg_button));
+        tvMarried.setTextColor(getResources().getColor(R.color.colorTextH3));
+        tvSingle.setBackground(getResources().getDrawable(R.drawable.bg_cards_unselected));
+        tvSingle.setTextColor(getResources().getColor(R.color.colorTextH2));
+    }
+
+    private void showDatePicker() {
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(BasicDetailsActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                if (i1 + 1 <= 9) {
+                    etDOB.setText(i2 + "/" + "0" + (i1 + 1) + "/" + i);
+                } else {
+                    etDOB.setText(i2 + "/" + (i1 + 1) + "/" + i);
+                }
+
+            }
+        }, day, month, year);
+        datePickerDialog.show();
+    }
+
+    @Override
+    public void sendBasicDetails() {
+
+        Toast.makeText(this, "sent", Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent(BasicDetailsActivity.this, KycActivity.class);
+//        startActivity(intent);
+//        finish();
+    }
+
+    @Override
+    public void fetchError() {
+
+        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
     }
 }
