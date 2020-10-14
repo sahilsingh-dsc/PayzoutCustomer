@@ -29,9 +29,9 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/montserrat"
-        android:text="Please complete all four section required to understand you better."
+        android:text="Please complete all five section which is required to do a proper assessment of your credit profile."
         android:textColor="@color/colorTextH2"
-        android:textSize="16sp" />
+        android:textSize="14sp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -84,10 +84,12 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/ivBasic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_margin="8dp"
+                    android:visibility="invisible"
                     android:src="@drawable/ic_baseline_check_circle_24" />
 
             </FrameLayout>
@@ -101,6 +103,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/lvResidence"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -127,10 +130,12 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/ivResi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_margin="8dp"
+                    android:visibility="invisible"
                     android:src="@drawable/ic_baseline_check_circle_24" />
 
             </FrameLayout>
@@ -144,6 +149,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/lvEmployment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -170,10 +176,58 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/ivEmp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_margin="8dp"
+                    android:visibility="invisible"
+                    android:src="@drawable/ic_baseline_check_circle_24" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/lvBanking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_cards_unselected"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="4. Banking Details"
+                        android:textColor="@color/colorTextH1"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="Please fill your details about your bank account."
+                        android:textColor="@color/colorTextH2"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/ivBank"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_margin="8dp"
+                    android:visibility="invisible"
                     android:src="@drawable/ic_baseline_check_circle_24" />
 
             </FrameLayout>
@@ -188,6 +242,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/lvKyc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -199,7 +254,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat"
-                        android:text="4. eKYC Documents"
+                        android:text="5. eKYC Documents"
                         android:textColor="@color/colorTextH1"
                         android:textSize="16sp" />
 
@@ -214,10 +269,12 @@
                 </LinearLayout>
 
                 <ImageView
+                    android:id="@+id/ivKyc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:layout_margin="8dp"
+                    android:visibility="invisible"
                     android:src="@drawable/ic_baseline_check_circle_24" />
 
             </FrameLayout>
@@ -227,7 +284,7 @@
     </ScrollView>
 
     <TextView
-        android:id="@+id/tvIAgree"
+        android:id="@+id/tvSubmitForVerification"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="16dp"

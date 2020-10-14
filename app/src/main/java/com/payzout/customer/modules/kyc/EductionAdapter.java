@@ -13,12 +13,12 @@ import com.payzout.customer.R;
 public class EductionAdapter extends BaseAdapter {
     private Context context;
     private String[] status;
-    private LayoutInflater inflter;
+    private LayoutInflater inflater;
 
     public EductionAdapter(Context context, String[] status) {
         this.context = context;
         this.status = status;
-        inflter = (LayoutInflater.from(context));
+        inflater = (LayoutInflater.from(context));
     }
 
     @Override
@@ -39,8 +39,7 @@ public class EductionAdapter extends BaseAdapter {
     @SuppressLint({"InflateParams", "ViewHolder"})
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = inflter.inflate(R.layout.education_item, null);
-
+        convertView = inflater.inflate(R.layout.education_item, null);
         TextView tvItems = convertView.findViewById(R.id.tvItems);
         tvItems.setText(status[position]);
         return convertView;

@@ -35,12 +35,13 @@ public class BasicDetailPresenter {
                             int maritalStatus, String panNo, String aadhaarNo,
                             String fatherName, String motherName, int language, int education) {
         String user_id = firebaseAuth.getCurrentUser().getUid();
+
         AuthInterface authInterface = APIClient.getRetrofitInstance().create(AuthInterface.class);
         Call<BasicInfo> basicInfoCall = authInterface.sendBasicInfo(user_id, firstName, lastName, email, gender, maritalStatus,  dob, panNo, aadhaarNo, language, education, fatherName, motherName);
         basicInfoCall.enqueue(new Callback<BasicInfo>() {
             @Override
             public void onResponse(Call<BasicInfo> call, Response<BasicInfo> response) {
-                Log.e(TAG, "onResponse: "+ response.body());
+                Log.e(TAG, "onResponse: "+response.body());
                 if (response.code() == 200){
                     iBasicDetail.sendBasicDetails();
                 } else if (response.code() == 400){
@@ -52,7 +53,7 @@ public class BasicDetailPresenter {
 
             @Override
             public void onFailure(Call<BasicInfo> call, Throwable t) {
-                Log.e(TAG, "onFailure: "+t.getMessage() );
+                Log.e(TAG, "onFailure: "+t.getMessage());
                 iBasicDetail.fetchError();
             }
         });

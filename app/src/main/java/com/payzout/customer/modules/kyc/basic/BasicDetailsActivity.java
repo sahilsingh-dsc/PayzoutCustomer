@@ -1,10 +1,7 @@
 package com.payzout.customer.modules.kyc.basic;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -14,14 +11,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.airbnb.lottie.LottieAnimationView;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.payzout.customer.R;
 import com.payzout.customer.modules.kyc.EductionAdapter;
-import com.payzout.customer.modules.kyc.KycActivity;
 import com.payzout.customer.modules.kyc.LanguageAdapter;
 import com.payzout.customer.modules.kyc.basic.presenter.BasicDetailPresenter;
 
@@ -45,7 +43,6 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
     private TextView tvMarried;
     private int spinnerSelectedEducation = 0;
     private int spinnerSelectedLanguage = 0;
-    private LottieAnimationView lottieAnimation;
     private boolean et1State = false;
     private boolean et2State = false;
     private boolean et3State = false;
@@ -59,6 +56,8 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
     private String[] educationStatus = {"", "Higher Secondary", "Senior Secondary", "Under Graduation", "Post Graduation"};
     private String[] language = {"", "English", "Hindi", "Others"};
 
+    private ImageView ivGoBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +69,6 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void initViews() {
-
         etFirstName = findViewById(R.id.etFirstName);
         etLastName = findViewById(R.id.etLastName);
         etEmail = findViewById(R.id.etEmail);
@@ -84,9 +82,11 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
         tvFemale = findViewById(R.id.tvFemale);
         tvSingle = findViewById(R.id.tvSingle);
         tvMarried = findViewById(R.id.tvMarried);
+        ivGoBack = findViewById(R.id.ivGoBack);
         Spinner spinnerEducation = findViewById(R.id.spinnerEducation);
         Spinner spinnerLanguage = findViewById(R.id.spinnerLanguage);
 
+        ivGoBack.setOnClickListener(this);
 
         textValidation();
 
@@ -373,6 +373,16 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
             doUiValidation();
         }
 
+        if (v == ivGoBack) {
+            onBackPressed();
+        }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     private void doUiValidation() {
@@ -419,24 +429,24 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
         matcher = p.matcher(aadharNo);
         if (!matcher.matches() || aadharNo.isEmpty()) {
             etAadharCardNo.requestFocus();
-            etAadharCardNo.setError("Enter Correct Aadhar No.");
+            etAadharCardNo.setError("Invalid aadhaar card number");
             return;
         }
 
         String fatherName = etFatherName.getText().toString();
         if (TextUtils.isEmpty(fatherName)) {
             etFatherName.requestFocus();
-            etFatherName.setError("Father Name is Required");
+            etFatherName.setError("Father name is required");
             return;
         }
 
         String motherName = etMotherName.getText().toString();
         if (TextUtils.isEmpty(motherName)) {
             etMotherName.requestFocus();
-            etMotherName.setError("Mother Name Required");
+            etMotherName.setError("Mother name is required");
             return;
         }
-        lottieAnimation.playAnimation();
+
         BasicDetailPresenter basicDetailPresenter = new BasicDetailPresenter(BasicDetailsActivity.this, BasicDetailsActivity.this);
         basicDetailPresenter.postDetails(firstName, lastName, email, genderSelect, dob,
                 maritalStatus, panCard, aadharNo, fatherName, motherName, spinnerSelectedLanguage, spinnerSelectedEducation);
@@ -458,17 +468,19 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
         if (position == 1) {
             spinnerSelectedEducation = 1;
             return;
+
         } else if (position == 2) {
             spinnerSelectedEducation = 2;
             return;
+
         } else if (position == 3) {
             spinnerSelectedEducation = 3;
-
             return;
+
         } else if (position == 4) {
             spinnerSelectedEducation = 4;
-
             return;
+
         } else {
             spinnerSelectedEducation = 0;
             return;
@@ -506,7 +518,6 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
         tvMarried.setTextColor(getResources().getColor(R.color.colorTextH2));
     }
 
-    @SuppressLint("UseCompatLoadingForDrawables")
     private void doMarriedSelected() {
         maritalStatus = 1;
         tvMarried.setBackground(getResources().getDrawable(R.drawable.bg_button));
@@ -538,15 +549,10 @@ public class BasicDetailsActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void sendBasicDetails() {
 
-        Toast.makeText(this, "sent", Toast.LENGTH_SHORT).show();
-//        Intent intent = new Intent(BasicDetailsActivity.this, KycActivity.class);
-//        startActivity(intent);
-//        finish();
     }
 
     @Override
     public void fetchError() {
-
-        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Something went wrong...", Toast.LENGTH_SHORT).show();
     }
 }

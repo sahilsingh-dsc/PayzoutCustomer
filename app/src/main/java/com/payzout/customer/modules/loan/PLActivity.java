@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.payzout.customer.R;
+import com.payzout.customer.modules.account.AccountActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ public class PLActivity extends AppCompatActivity implements View.OnClickListene
     private RecyclerView recyclerAmount;
     private RecyclerView recyclerDuration;
     private TextView tvContinue;
+    private ImageView ivMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class PLActivity extends AppCompatActivity implements View.OnClickListene
         recyclerDuration = findViewById(R.id.recyclerDuration);
 
         tvContinue = findViewById(R.id.tvContinue);
+        ivMenu = findViewById(R.id.ivMenu);
 
         recyclerAmount.setLayoutManager(new GridLayoutManager(this, 3));
         recyclerDuration.setLayoutManager(new GridLayoutManager(this, 3));
@@ -41,6 +45,7 @@ public class PLActivity extends AppCompatActivity implements View.OnClickListene
         setPLDurationRecycler();
 
         tvContinue.setOnClickListener(this);
+        ivMenu.setOnClickListener(this);
     }
 
     private void setPLDurationRecycler() {
@@ -77,7 +82,11 @@ public class PLActivity extends AppCompatActivity implements View.OnClickListene
     public void onClick(View view) {
         if (view == tvContinue) {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            //startActivity(new Intent(PLActivity.this, EKYCActivity.class));
+        }
+
+        if (view == ivMenu) {
+            Intent intent = new Intent(PLActivity.this, AccountActivity.class);
+            startActivity(intent);
         }
     }
 }
