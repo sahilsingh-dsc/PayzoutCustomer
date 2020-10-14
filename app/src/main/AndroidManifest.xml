@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
@@ -20,7 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".scanner.SelfieActivity"/>
+        <activity android:name=".account.HelpActivity"></activity>
+        <activity android:name=".account.LoanHistoryActivity" />
+        <activity android:name=".account.ManageAccountActivity" />
+        <activity android:name=".lending.kyc.KycBankActivity" />
+        <activity android:name=".lending.kyc.KycReferencesActivity" />
+        <activity android:name=".scanner.SelfieActivity" />
         <activity android:name=".lending.main.LendingMainActivity" />
         <activity android:name=".lending.kyc.KycDocumentUploadActivity" />
         <activity android:name=".lending.kyc.KycDetailsActivity" />
