@@ -18,12 +18,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".lending.kyc.KycBankActivity" />
         <activity android:name=".lending.kyc.KycReferencesActivity" />
         <activity android:name=".scanner.SelfieActivity" />
-        <activity android:name=".common.SplashActivity" />
+        <activity android:name=".lending.main.LendingMainActivity" />
         <activity android:name=".lending.kyc.KycDocumentUploadActivity" />
         <activity android:name=".lending.kyc.KycDetailsActivity" />
         <activity android:name=".lending.kyc.KycOnBoardActivity" />
@@ -38,7 +39,7 @@
         <activity android:name=".modules.loan.PLActivity" />
         <activity android:name=".auth.CodeActivity" />
         <activity android:name=".auth.PhoneActivity" />
-        <activity android:name=".lending.main.LendingMainActivity">
+        <activity android:name=".common.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

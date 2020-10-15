@@ -20,6 +20,7 @@ import com.payzout.customer.apis.APIClient;
 import com.payzout.customer.apis.CustomerInterface;
 import com.payzout.customer.auth.PhoneActivity;
 import com.payzout.customer.auth.model.CheckCustomer;
+import com.payzout.customer.lending.kyc.KycDocumentUploadActivity;
 import com.payzout.customer.lending.kyc.KycOnBoardActivity;
 import com.payzout.customer.modules.kyc.KycActivity;
 import com.payzout.customer.modules.loan.PLActivity;
@@ -99,6 +100,7 @@ public class SplashActivity extends AppCompatActivity {
 
             if (firebaseAuth.getCurrentUser() != null) {
                 checkUser(firebaseAuth.getCurrentUser().getUid());
+                gotoLendingMain();
             } else {
                 gotoLogin();
             }
@@ -133,7 +135,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void gotoLendingMain() {
-        Intent intent = new Intent(SplashActivity.this, KycOnBoardActivity.class);
+        Intent intent = new Intent(SplashActivity.this, KycDocumentUploadActivity.class);
         startActivity(intent);
         finish();
     }
