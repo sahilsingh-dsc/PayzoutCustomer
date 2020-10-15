@@ -1,12 +1,7 @@
 package com.payzout.customer.apis;
 
 import com.payzout.customer.auth.model.CheckCustomer;
-import com.payzout.customer.lending.model.AddCustomerReference;
 import com.payzout.customer.lending.model.CustomerKycDetails;
-import com.payzout.customer.lending.model.UserAB;
-import com.payzout.customer.lending.model.UserAF;
-import com.payzout.customer.lending.model.UserDL;
-import com.payzout.customer.lending.model.UserSelfie;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -38,40 +33,5 @@ public interface CustomerInterface {
             @Field("company_name") String company_name,
             @Field("monthly_salary") String monthly_salary,
             @Field("industry") String industry
-    );
-
-    @FormUrlEncoded
-    @POST("Customer/submitSelfie")
-    Call<UserSelfie> submitSelfie(@Field("user_id") String user_id,
-                                  @Field("selfie_url") String image_url);
-
-
-    @FormUrlEncoded
-    @POST("Customer/submitAadhaarCardBack")
-    Call<UserAB> submitUserAB(@Field("user_id") String user_id,
-                              @Field("aadhaar_url") String image_url);
-
-    @FormUrlEncoded
-    @POST("Customer/submitAadhaarCardFront")
-    Call<UserAF> submitUserAF(@Field("user_id") String user_id,
-                              @Field("aadhaar_url") String image_url);
-
-    @FormUrlEncoded
-    @POST("Customer/submitDrivingLicense")
-    Call<UserDL> submitUserDl(@Field("user_id") String user_id,
-                              @Field("dl_url") String dl_url,
-                              @Field("dl_no") String dl_no);
-
-    @FormUrlEncoded
-    @POST("Customer/addCustomerReference")
-    Call<AddCustomerReference> addCustomerReference(@Field("reference_type1") String reference_type1,
-                                                    @Field("name1") String name1,
-                                                    @Field("phone_no1") String phone_no1,
-                                                    @Field("reference_type2") String reference_type2,
-                                                    @Field("name2") String name2,
-                                                    @Field("phone_no2") String phone_no2,
-                                                    @Field("id") String id,
-                                                    @Field("user_id") String user_id
-
     );
 }
