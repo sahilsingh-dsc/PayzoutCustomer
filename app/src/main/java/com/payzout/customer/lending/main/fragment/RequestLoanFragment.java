@@ -91,7 +91,7 @@ public class RequestLoanFragment extends Fragment implements View.OnClickListene
             @Override
             public void run() {
                 doHideLoading();
-                Fragment fragment = new VerificationPendingFragment();
+                Fragment fragment = new RepaymentFragment();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frameContent, fragment);
