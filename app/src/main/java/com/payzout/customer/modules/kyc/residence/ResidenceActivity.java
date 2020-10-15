@@ -14,14 +14,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.payzout.customer.R;
 import com.payzout.customer.apis.APIClient;
 import com.payzout.customer.apis.AuthInterface;
 import com.payzout.customer.common.Master;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.payzout.customer.utils.SpinnerDataAdapter;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -242,8 +239,8 @@ public class ResidenceActivity extends AppCompatActivity implements View.OnClick
     }
 
     private void setStatesInSpinner() {
-        StateAdapter stateAdapter = new StateAdapter(ResidenceActivity.this, states);
-        spinnerState.setAdapter(stateAdapter);
+        SpinnerDataAdapter spinnerDataAdapter = new SpinnerDataAdapter(ResidenceActivity.this, states);
+        spinnerState.setAdapter(spinnerDataAdapter);
     }
 
     private void doSelectOwnedResidence() {

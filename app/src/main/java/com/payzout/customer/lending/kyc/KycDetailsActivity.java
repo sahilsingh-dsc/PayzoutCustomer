@@ -26,7 +26,7 @@ import com.payzout.customer.R;
 import com.payzout.customer.apis.APIClient;
 import com.payzout.customer.apis.CustomerInterface;
 import com.payzout.customer.lending.model.CustomerKycDetails;
-import com.payzout.customer.modules.kyc.residence.StateAdapter;
+import com.payzout.customer.utils.SpinnerDataAdapter;
 import com.payzout.customer.utils.Constant;
 import com.payzout.customer.utils.DatePickerFragment;
 
@@ -416,18 +416,18 @@ public class KycDetailsActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void setStatesInSpinner() {
-        StateAdapter stateAdapter = new StateAdapter(KycDetailsActivity.this, STATES);
-        spinnerState.setAdapter(stateAdapter);
+        SpinnerDataAdapter spinnerDataAdapter = new SpinnerDataAdapter(KycDetailsActivity.this, STATES);
+        spinnerState.setAdapter(spinnerDataAdapter);
     }
 
     private void setEducationInSpinner() {
-        StateAdapter stateAdapter = new StateAdapter(KycDetailsActivity.this, EDUCATION);
-        spinnerEducation.setAdapter(stateAdapter);
+        SpinnerDataAdapter spinnerDataAdapter = new SpinnerDataAdapter(KycDetailsActivity.this, EDUCATION);
+        spinnerEducation.setAdapter(spinnerDataAdapter);
     }
 
     private void setLanguageInSpinner() {
-        StateAdapter stateAdapter = new StateAdapter(KycDetailsActivity.this, LANGUAGE);
-        spinnerLanguage.setAdapter(stateAdapter);
+        SpinnerDataAdapter spinnerDataAdapter = new SpinnerDataAdapter(KycDetailsActivity.this, LANGUAGE);
+        spinnerLanguage.setAdapter(spinnerDataAdapter);
     }
 
     private void showDOBDialog() {

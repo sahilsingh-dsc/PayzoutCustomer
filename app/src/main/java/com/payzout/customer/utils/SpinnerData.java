@@ -1,11 +1,11 @@
-package com.payzout.customer.modules.kyc.residence;
+package com.payzout.customer.utils;
 
 import java.util.List;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class State {
+public class SpinnerData {
 
     @SerializedName("status")
     @Expose
@@ -17,14 +17,14 @@ public class State {
     /**
      * No args constructor for use in serialization
      */
-    public State() {
+    public SpinnerData() {
     }
 
     /**
      * @param data
      * @param status
      */
-    public State(Boolean status, List<Datum> data) {
+    public SpinnerData(Boolean status, List<Datum> data) {
         super();
         this.status = status;
         this.data = data;

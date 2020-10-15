@@ -1,4 +1,4 @@
-package com.payzout.customer.modules.kyc.residence;
+package com.payzout.customer.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 import com.payzout.customer.R;
 
-public class StateAdapter extends BaseAdapter {
+public class SpinnerDataAdapter extends BaseAdapter {
     private Context context;
     private String[] state;
     private LayoutInflater inflater;
 
-    public StateAdapter(Context context, String[] state) {
+    public SpinnerDataAdapter(Context context, String[] state) {
         this.context = context;
         this.state = state;
         this.inflater = LayoutInflater.from(context);

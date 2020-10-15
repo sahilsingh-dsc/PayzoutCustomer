@@ -70,7 +70,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:textSize="14sp"
                 android:fontFamily="@font/montserrat"
+                android:textColor="@color/colorTextH2"
                 android:text="Please provide required documents with accurate information for faster processing."/>
 
             <LinearLayout
@@ -272,6 +274,8 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:textSize="14sp"
+                android:textColor="@color/colorTextH2"
                 android:fontFamily="@font/montserrat"
                 android:text="Optional documents may give you higher credit limit and faster processing."/>
 

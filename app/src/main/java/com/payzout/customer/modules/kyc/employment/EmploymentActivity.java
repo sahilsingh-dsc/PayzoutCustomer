@@ -17,8 +17,7 @@ import com.payzout.customer.R;
 import com.payzout.customer.apis.APIClient;
 import com.payzout.customer.apis.AuthInterface;
 import com.payzout.customer.common.Master;
-import com.payzout.customer.modules.kyc.residence.ResidenceActivity;
-import com.payzout.customer.modules.kyc.residence.StateAdapter;
+import com.payzout.customer.utils.SpinnerDataAdapter;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -306,8 +305,8 @@ public class EmploymentActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void setStatesInSpinner() {
-        StateAdapter stateAdapter = new StateAdapter(EmploymentActivity.this, states);
-        spinnerState.setAdapter(stateAdapter);
+        SpinnerDataAdapter spinnerDataAdapter = new SpinnerDataAdapter(EmploymentActivity.this, states);
+        spinnerState.setAdapter(spinnerDataAdapter);
     }
 
     private void doSelectSalaried() {

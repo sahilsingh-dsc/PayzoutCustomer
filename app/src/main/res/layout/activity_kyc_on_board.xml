@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center"
-                    android:text="@string/available_credit_limit"
+                    android:text="Maximum Loan Amount"
                     android:textColor="@color/colorTextH1"
                     android:textSize="16sp" />
 
@@ -143,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="Submit Details"
+                    android:text="Apply"
                     android:gravity="center"
                     android:textColor="@color/colorTextH1"
                     android:textSize="12sp" />
@@ -185,7 +185,7 @@
                     android:textSize="12sp"
                     android:gravity="center"
                     android:fontFamily="@font/montserrat"
-                    android:text="Quick approval"/>
+                    android:text="Approve"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -193,7 +193,7 @@
                     android:fontFamily="@font/montserrat"
                     android:textColor="@color/colorTextH2"
                     android:textSize="10sp"
-                    android:text="Only 3 minutes"/>
+                    android:text="5 minutes"/>
 
             </LinearLayout>
 
@@ -224,7 +224,7 @@
                     android:textSize="12sp"
                     android:gravity="center"
                     android:fontFamily="@font/montserrat"
-                    android:text="Cash to bank"/>
+                    android:text="Account"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -232,7 +232,7 @@
                     android:fontFamily="@font/montserrat"
                     android:textColor="@color/colorTextH2"
                     android:textSize="10sp"
-                    android:text="Review 1 minutes"/>
+                    android:text="1 minutes"/>
 
             </LinearLayout>
 

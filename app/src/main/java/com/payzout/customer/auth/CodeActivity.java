@@ -32,6 +32,7 @@ import com.payzout.customer.R;
 import com.payzout.customer.apis.APIClient;
 import com.payzout.customer.apis.AuthInterface;
 import com.payzout.customer.auth.model.CheckUser;
+import com.payzout.customer.lending.kyc.KycOnBoardActivity;
 import com.payzout.customer.modules.kyc.KycActivity;
 import com.payzout.customer.modules.loan.PLActivity;
 import com.payzout.customer.utils.Constant;
@@ -243,7 +244,7 @@ public class CodeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void gotoLoanApplication() {
-        Intent intent = new Intent(CodeActivity.this, KycActivity.class);
+        Intent intent = new Intent(CodeActivity.this, KycOnBoardActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }

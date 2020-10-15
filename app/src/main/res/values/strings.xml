@@ -7,9 +7,11 @@
     <string name="home">Home</string>
     <string name="_20_000">₹20,000</string>
     <string name="available_credit_limit">Credit available upto</string>
-    <string name="_50_000">₹50,000</string>
-    <string name="_100_000">₹100,000</string>
-    <string name="_500_000">₹500,000</string>
+    <string name="_50_000">₹ 50,000</string>
+    <string name="loan_amount">₹ 3,000</string>
+    <string name="disbursal_amount">₹ 1,950</string>
+    <string name="_100_000">₹ 100,000</string>
+    <string name="_500_000">₹ 500,000</string>
 
     <!-- permission strings-->
     <string name="per_phone_title">Phone</string>
@@ -25,7 +27,7 @@
 
     <string name="str_months">Months</string>
     <string name="str_days">Days</string>
-    <string name="account_desc">You can manage everything related you loan account.</string>
+    <string name="account_desc">You can manage everything related your profile, loans, etc here.</string>
     <string name="pincode">Pincode</string>
 
     <string-array name="india_states">
@@ -68,5 +70,6 @@
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="help_desc">We are here to help you with what ever problem you have regarding your loan.</string>
 
 </resources>

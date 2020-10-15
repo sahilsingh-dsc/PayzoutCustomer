@@ -4,7 +4,7 @@ import com.payzout.customer.auth.model.CheckUser;
 import com.payzout.customer.modules.kyc.basic.BasicInfo;
 import com.payzout.customer.modules.kyc.employment.EmploymentResponse;
 import com.payzout.customer.modules.kyc.residence.ResidenseResponse;
-import com.payzout.customer.modules.kyc.residence.State;
+import com.payzout.customer.utils.SpinnerData;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -38,7 +38,7 @@ public interface AuthInterface {
     );
 
     @GET("Auth/StateList")
-    Call<State> getState(@Header("Access-Token") String tokens);
+    Call<SpinnerData> getState(@Header("Access-Token") String tokens);
 
     @FormUrlEncoded
     @POST("Auth/submitResidentialAddress")
