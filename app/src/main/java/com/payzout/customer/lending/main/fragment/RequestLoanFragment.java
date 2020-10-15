@@ -31,7 +31,6 @@ public class RequestLoanFragment extends Fragment implements View.OnClickListene
     private TextView tvRequestLoan;
     private LottieAnimationView aniLoading;
 
-
     public RequestLoanFragment() {
     }
 
