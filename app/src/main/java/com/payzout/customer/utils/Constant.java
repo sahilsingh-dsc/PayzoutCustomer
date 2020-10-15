@@ -14,4 +14,7 @@ public class Constant {
     public static final int PHOTO_AB = 4;
     public static final int PHOTO_DL = 5;
 
+    public static final int REF_CONTACT_1 = 1;
+    public static final int REF_CONTACT_2 = 2;
+
 }
