@@ -82,7 +82,7 @@ public class KycReferencesActivity extends AppCompatActivity {
         etName2 = findViewById(R.id.etName2);
         etPhoneNum1 = findViewById(R.id.etPhoneNum1);
         etPhoneNum2 = findViewById(R.id.etPhoneNum2);
-
+//afafc
 
         etName1.setOnClickListener(new View.OnClickListener() {
             @Override
