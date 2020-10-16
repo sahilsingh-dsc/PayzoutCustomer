@@ -173,7 +173,7 @@
             android:text="Save"
             android:textColor="@color/colorTextH3"
             android:textSize="16sp"
-            android:visibility="visible" />
+            android:visibility="visible"/>
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/aniLoadingSave"
@@ -181,7 +181,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:visibility="gone"
-            app:lottie_rawRes="@raw/pb_loading" />
+            app:lottie_rawRes="@raw/pb_loading"/>
 
     </FrameLayout>
 

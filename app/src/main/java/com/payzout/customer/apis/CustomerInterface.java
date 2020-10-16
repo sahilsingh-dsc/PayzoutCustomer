@@ -2,6 +2,7 @@ package com.payzout.customer.apis;
 
 import com.payzout.customer.auth.model.CheckCustomer;
 import com.payzout.customer.lending.model.CustomerKycDetails;
+import com.payzout.customer.lending.model.KycBankList;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -35,4 +36,7 @@ public interface CustomerInterface {
             @Field("industry") String industry
     );
 
+    @FormUrlEncoded
+    @POST("Customer/submitBankAccountDetails")
+    Call<KycBankList> kycBankList(@Field("user_id") String user_id);
 }
