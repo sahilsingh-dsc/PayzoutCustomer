@@ -1,10 +1,5 @@
 package com.payzout.customer.lending.kyc;
 
-import androidx.appcompat.app.AppCompatActivity;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
@@ -15,12 +10,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.payzout.customer.R;
 import com.payzout.customer.apis.APIClient;
-import com.payzout.customer.apis.AuthInterface;
 import com.payzout.customer.apis.CustomerInterface;
+import com.payzout.customer.apis.RazorpayInterface;
+import com.payzout.customer.lending.model.IfscCheckList;
 import com.payzout.customer.lending.model.KycBankList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class KycBankActivity extends AppCompatActivity {
     private EditText etAccountNumber;
@@ -36,7 +38,10 @@ public class KycBankActivity extends AppCompatActivity {
     private boolean accountStatus = false;
     private boolean confirmAccountStatus = false;
     private boolean ifscStatus = false;
-
+    String accountNumber;
+    private FirebaseAuth firebaseAuth;
+    String confirmAccount;
+    String ifscCode;
 
 
     @Override
@@ -50,6 +55,8 @@ public class KycBankActivity extends AppCompatActivity {
     }
 
     private void initViews() {
+        firebaseAuth = FirebaseAuth.getInstance();
+        user_id = firebaseAuth.getCurrentUser().getUid();
         etAccountNumber = findViewById(R.id.etAccountNumber);
         etConfirmAccount = findViewById(R.id.etConfirmAccount);
         etIfscCode = findViewById(R.id.etIfscCode);
@@ -64,10 +71,10 @@ public class KycBankActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String accountNumber = etAccountNumber.getText().toString();
-                if (accountNumber.isEmpty()){
+                accountNumber = etAccountNumber.getText().toString();
+                if (accountNumber.isEmpty()) {
                     accountStatus = false;
-                }else {
+                } else {
                     accountStatus = true;
                 }
                 validateBank();
@@ -89,11 +96,12 @@ public class KycBankActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String confirmAccount = etConfirmAccount.getText().toString();
-                if (confirmAccount.isEmpty()){
+                confirmAccount = etConfirmAccount.getText().toString();
+                if (confirmAccount.isEmpty()) {
                     confirmAccountStatus = false;
-                }else {
+                } else if (accountNumber.equals(confirmAccount)) {
                     confirmAccountStatus = true;
+                    Toast.makeText(KycBankActivity.this, "Your Account Number Is Matching", Toast.LENGTH_SHORT).show();
                 }
                 validateBank();
             }
@@ -113,13 +121,15 @@ public class KycBankActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String ifscCode = etIfscCode.getText().toString();
-                if (ifscCode.isEmpty()){
+               ifscCode = etIfscCode.getText().toString();
+                if (ifscCode.isEmpty()) {
                     ifscStatus = false;
-                }else {
+                } else if (ifscCode.length() == 11) {
                     ifscStatus = true;
+
                 }
-                    validateBank();
+                validateIFSC(ifscCode);
+                validateBank();
             }
 
             @Override
@@ -129,21 +139,20 @@ public class KycBankActivity extends AppCompatActivity {
         });
 
 
-
         tvSaveAccountDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 CustomerInterface customerInterface = APIClient.getRetrofitInstance().create(CustomerInterface.class);
 
-                Call<KycBankList> kycBankListCall = customerInterface.kycBankList(user_id);
+                Call<KycBankList> kycBankListCall = customerInterface.kycBankList("adv", confirmAccount, ifscCode, user_id);
                 kycBankListCall.enqueue(new Callback<KycBankList>() {
                     @Override
                     public void onResponse(Call<KycBankList> call, Response<KycBankList> response) {
                         Log.e(TAG, "onResponse: " + response.code() + response.body() + response.message());
-                        if (response.code() == 200){
+                        if (response.code() == 200) {
                             Toast.makeText(KycBankActivity.this, "Bank Account added Successfully", Toast.LENGTH_SHORT).show();
-                        }else if (response.code() == 400){
+                        } else if (response.code() == 400) {
                             Toast.makeText(KycBankActivity.this, "Account Number already in use with other user", Toast.LENGTH_LONG).show();
                         }
 
@@ -151,7 +160,7 @@ public class KycBankActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<KycBankList> call, Throwable t) {
-                        Toast.makeText(KycBankActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(KycBankActivity.this, "" + t.getMessage(), Toast.LENGTH_SHORT).show();
 
                     }
                 });
@@ -160,14 +169,36 @@ public class KycBankActivity extends AppCompatActivity {
         });
     }
 
-    private void validateBank(){
-        if (accountStatus && confirmAccountStatus && ifscStatus){
+    private void validateBank() {
+        if (accountStatus && confirmAccountStatus && ifscStatus) {
             tvSaveAccountDetails.setEnabled(true);
             tvSaveAccountDetails.setBackground(getResources().getDrawable(R.drawable.bg_button));
 
-        }else {
+        } else {
             tvSaveAccountDetails.setEnabled(false);
             tvSaveAccountDetails.setBackground(getResources().getDrawable(R.drawable.bg_button_disabled));
         }
+    }
+
+    private void validateIFSC(String ifscCode) {
+        RazorpayInterface razorpayInterface = APIClient.getRazorPayInstance().create(RazorpayInterface.class);
+        Call<IfscCheckList> call = razorpayInterface.fetechIfscdetails(ifscCode);
+        call.enqueue(new Callback<IfscCheckList>() {
+            @Override
+            public void onResponse(Call<IfscCheckList> call, Response<IfscCheckList> response) {
+                if (response.code() == 200) {
+                    etIfscCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_check_circle_24, 0);
+                    Log.e(TAG, "onResponse: " + response.body().getADDRESS());
+                } else if (response.code() == 404) {
+                    etIfscCode.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_report_problem_24, 0);
+                    Log.e(TAG, "onResponse: IFSC not found");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<IfscCheckList> call, Throwable t) {
+                Log.e(TAG, "onFailure: " + t.getMessage());
+            }
+        });
     }
 }

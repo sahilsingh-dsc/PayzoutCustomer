@@ -82,7 +82,6 @@ public class KycReferencesActivity extends AppCompatActivity {
         etName2 = findViewById(R.id.etName2);
         etPhoneNum1 = findViewById(R.id.etPhoneNum1);
         etPhoneNum2 = findViewById(R.id.etPhoneNum2);
-//afa
 
         etName1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,6 +200,7 @@ public class KycReferencesActivity extends AppCompatActivity {
 
 
     private void proceedReference() {
+
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference reference = db.collection("reference").document();
         String id = reference.getId();
@@ -215,6 +215,8 @@ public class KycReferencesActivity extends AppCompatActivity {
                     if (response.code() == 200) {
                         Log.e(TAG, "onResponse: UPLOADED");
                         Toast.makeText(KycReferencesActivity.this, "Done", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(KycReferencesActivity.this, KycBankActivity.class);
+                        startActivity(intent);
                     } else if (response.code() == 400) {
                         Log.e(TAG, "onResponse: " + response.message());
                         Toast.makeText(KycReferencesActivity.this, "Not Uploaded", Toast.LENGTH_SHORT).show();

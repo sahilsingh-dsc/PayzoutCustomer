@@ -280,21 +280,20 @@ public class KycDocumentUploadActivity extends AppCompatActivity implements View
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 progressPan.setVisibility(View.INVISIBLE);
                 Toast.makeText(KycDocumentUploadActivity.this, "Uploaded to storage", Toast.LENGTH_SHORT).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(KycDocumentUploadActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                 imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
                         fileUrl = uri.toString();
                         Log.e(TAG, "onSuccess: " + fileUrl);
-//                        sendPanToApi(id, fileUrl);
-                        // sendDlToApi(id, fileUrl);
-                        //  sendABToApi(id, fileUrl);
+
                     }
                 });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(KycDocumentUploadActivity.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -308,7 +307,7 @@ public class KycDocumentUploadActivity extends AppCompatActivity implements View
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 progressPan.setVisibility(View.INVISIBLE);
-              //  Toast.makeText(KycDocumentUploadActivity.this, "Uploaded to storage", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(KycDocumentUploadActivity.this, "Uploaded to storage", Toast.LENGTH_SHORT).show();
                 imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
@@ -339,7 +338,7 @@ public class KycDocumentUploadActivity extends AppCompatActivity implements View
                     aadhaarBStatus = true;
                     formValidation();
                     Log.e(TAG, "onResponse: AB submitted successfully");
-                   // Toast.makeText(KycDocumentUploadActivity.this, "AB submitted successfully", Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(KycDocumentUploadActivity.this, "AB submitted successfully", Toast.LENGTH_SHORT).show();
                 } else if (response.code() == 400) {
                     Log.e(TAG, "onResponse: Invalid inputs");
                     Toast.makeText(KycDocumentUploadActivity.this, "Invalid inputs", Toast.LENGTH_SHORT).show();
@@ -364,7 +363,7 @@ public class KycDocumentUploadActivity extends AppCompatActivity implements View
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 progressPan.setVisibility(View.INVISIBLE);
-              //  Toast.makeText(KycDocumentUploadActivity.this, "Uploaded to storage", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(KycDocumentUploadActivity.this, "Uploaded to storage", Toast.LENGTH_SHORT).show();
                 imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
@@ -396,7 +395,7 @@ public class KycDocumentUploadActivity extends AppCompatActivity implements View
                     aadhaarFStatus = true;
                     formValidation();
                     Log.e(TAG, "onResponse: AF submitted successfully");
-                  //  Toast.makeText(KycDocumentUploadActivity.this, "AF submitted successfully", Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(KycDocumentUploadActivity.this, "AF submitted successfully", Toast.LENGTH_SHORT).show();
                 } else if (response.code() == 400) {
                     Log.e(TAG, "onResponse: Invalid inputs");
                     Toast.makeText(KycDocumentUploadActivity.this, "Invalid inputs", Toast.LENGTH_SHORT).show();
@@ -451,7 +450,7 @@ public class KycDocumentUploadActivity extends AppCompatActivity implements View
                     progressDL.setVisibility(View.INVISIBLE);
                     dlStatus = true;
                     Log.e(TAG, "onResponse: DL submitted successfully");
-                //    Toast.makeText(KycDocumentUploadActivity.this, "DL submitted successfully", Toast.LENGTH_SHORT).show();
+                    //    Toast.makeText(KycDocumentUploadActivity.this, "DL submitted successfully", Toast.LENGTH_SHORT).show();
                 } else if (response.code() == 400) {
                     Log.e(TAG, "onResponse: Invalid inputs");
                     progressDL.setVisibility(View.INVISIBLE);
@@ -477,7 +476,7 @@ public class KycDocumentUploadActivity extends AppCompatActivity implements View
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 progressPan.setVisibility(View.INVISIBLE);
-               // Toast.makeText(KycDocumentUploadActivity.this, "Uploaded to storage", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(KycDocumentUploadActivity.this, "Uploaded to storage", Toast.LENGTH_SHORT).show();
                 panStatus = true;
                 formValidation();
                 imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -511,7 +510,7 @@ public class KycDocumentUploadActivity extends AppCompatActivity implements View
         imageRef.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-               // Toast.makeText(KycDocumentUploadActivity.this, "Uploaded to storage", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(KycDocumentUploadActivity.this, "Uploaded to storage", Toast.LENGTH_SHORT).show();
                 imageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                     @Override
                     public void onSuccess(Uri uri) {
