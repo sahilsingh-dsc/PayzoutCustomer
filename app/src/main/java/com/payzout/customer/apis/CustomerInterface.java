@@ -2,11 +2,13 @@ package com.payzout.customer.apis;
 
 import com.payzout.customer.auth.model.CheckCustomer;
 import com.payzout.customer.lending.model.CustomerKycDetails;
+import com.payzout.customer.lending.model.IfscCheckList;
 import com.payzout.customer.lending.model.KycBankList;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface CustomerInterface {
@@ -38,5 +40,11 @@ public interface CustomerInterface {
 
     @FormUrlEncoded
     @POST("Customer/submitBankAccountDetails")
-    Call<KycBankList> kycBankList(@Field("user_id") String user_id);
+    Call<KycBankList> kycBankList(@Field("user_id") String user_id,
+                                  @Field("name_on_account") String name_on_account,
+                                  @Field("account_number") String account_number,
+                                  @Field("ifsc") String ifsc
+
+    );
+
 }

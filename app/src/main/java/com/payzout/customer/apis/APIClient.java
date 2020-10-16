@@ -7,19 +7,35 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class APIClient {
-    private static Retrofit retrofit;
+    private static Retrofit retrofitRazorpay;
+    private static Retrofit retrofitREST;
     private static final String BASE_URL = "http://35.228.105.69/payzout/";
+    private static final String VALIDATOR_URL = "https://ifsc.razorpay.com/";
 
     public static Retrofit getRetrofitInstance() {
-        if (retrofit == null) {
+        if (retrofitREST == null) {
             Gson gson = new GsonBuilder()
                     .setLenient()
                     .create();
-            retrofit = new retrofit2.Retrofit.Builder()
+            retrofitREST = new retrofit2.Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
         }
-        return retrofit;
+        return retrofitREST;
     }
+
+    public static Retrofit getRazorpayInstance() {
+        if (retrofitRazorpay == null) {
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
+            retrofitRazorpay = new retrofit2.Retrofit.Builder()
+                    .baseUrl(VALIDATOR_URL)
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+                    .build();
+        }
+        return retrofitRazorpay;
+    }
+
 }

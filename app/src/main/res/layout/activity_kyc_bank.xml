@@ -143,6 +143,7 @@
                     android:background="@drawable/bg_textbox"
                     android:fontFamily="@font/montserrat_bold"
                     android:hint="IFSC Code"
+                    android:maxLength="11"
                     android:inputType="textEmailAddress"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
