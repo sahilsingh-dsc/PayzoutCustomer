@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import com.payzout.customer.R;
 
-
 public class RepaymentFragment extends Fragment {
 
     @Override

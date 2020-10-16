@@ -13,11 +13,8 @@ import com.payzout.customer.R;
 
 public class KycRejectedFragment extends Fragment {
 
-
-
     public KycRejectedFragment() {
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

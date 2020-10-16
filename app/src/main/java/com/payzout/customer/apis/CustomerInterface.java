@@ -34,4 +34,5 @@ public interface CustomerInterface {
             @Field("monthly_salary") String monthly_salary,
             @Field("industry") String industry
     );
+
 }

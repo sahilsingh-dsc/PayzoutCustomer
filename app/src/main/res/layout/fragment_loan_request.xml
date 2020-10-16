@@ -43,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
                     android:gravity="center"
-                    android:text="@string/loan_amount"
+                    android:text="..."
                     android:textColor="@color/colorPrimary"
                     android:textSize="30sp" />
 
@@ -118,7 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="@string/disbursal_amount"
+                    android:text="..."
                     android:textColor="@color/colorTextH2"
                     android:textSize="14sp" />
 
@@ -148,7 +148,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="7 days"
+                    android:text="..."
                     android:textColor="@color/colorTextH2"
                     android:textSize="14sp" />
 
@@ -178,7 +178,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="@string/loan_amount"
+                    android:text="..."
                     android:textColor="@color/colorTextH2"
                     android:textSize="14sp" />
 
@@ -208,7 +208,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="21-10-2020"
+                    android:text="..."
                     android:textColor="@color/colorTextH2"
                     android:textSize="14sp" />
 
@@ -258,7 +258,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="917389410182"
+                    android:text="..."
                     android:textColor="@color/colorTextH2"
                     android:textSize="14sp" />
 
@@ -271,7 +271,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="PYTM0312456"
+                    android:text="..."
                     android:layout_marginEnd="4dp"
                     android:gravity="end"
                     android:textColor="@color/colorTextH2"

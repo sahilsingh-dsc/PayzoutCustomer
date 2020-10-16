@@ -20,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".lending.repayment.RepaymentActivity"/>
         <activity android:name=".lending.kyc.KycBankActivity" />
         <activity android:name=".lending.kyc.KycReferencesActivity" />
         <activity android:name=".scanner.SelfieActivity" />

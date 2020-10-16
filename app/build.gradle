@@ -63,4 +63,7 @@ dependencies {
     // camera view
     api 'com.otaliastudios:cameraview:2.6.4'
 
+    // easyUPI
+    implementation 'com.shreyaspatil:EasyUpiPayment:2.2'
+
 }
