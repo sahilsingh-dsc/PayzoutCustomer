@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/lvDoc"
     tools:context=".lending.kyc.KycDocumentUploadActivity">
 
     <LinearLayout
@@ -96,7 +97,6 @@
                         <FrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:layout_weight="1"
                             android:layout_gravity="center">
 
@@ -157,7 +157,6 @@
                         <FrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:layout_weight="1"
                             android:layout_gravity="center">
 
@@ -205,6 +204,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
@@ -225,7 +225,6 @@
                         <FrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:layout_weight="1"
                             android:layout_gravity="center">
 
@@ -286,7 +285,6 @@
                         <FrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:layout_weight="1"
                             android:layout_gravity="center">
 
@@ -337,6 +335,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:visibility="gone"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Optional Documents"
                 android:textColor="@color/colorPrimary"
@@ -348,6 +347,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:visibility="gone"
                 android:fontFamily="@font/montserrat"
                 android:text="Optional documents may give you higher credit limit and faster processing."/>
 
@@ -355,6 +355,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
@@ -502,7 +503,7 @@
             android:gravity="center"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:text="Proceed"
+            android:text="Save &amp; Proceed"
             android:textColor="@color/colorTextH3"
             android:textSize="16sp"
             android:visibility="visible" />

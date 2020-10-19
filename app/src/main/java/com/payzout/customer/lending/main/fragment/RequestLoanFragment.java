@@ -19,7 +19,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.payzout.customer.R;
 import com.payzout.customer.apis.APIClient;
+import com.payzout.customer.apis.CustomerInterface;
 import com.payzout.customer.apis.LoanInterface;
+import com.payzout.customer.lending.model.CustomerBank;
+import com.payzout.customer.lending.model.CustomerBankResponse;
 import com.payzout.customer.lending.model.LoanOffer;
 import com.payzout.customer.lending.model.LoanOfferResponse;
 
@@ -38,13 +41,13 @@ public class RequestLoanFragment extends Fragment implements View.OnClickListene
     private TextView tvRepaymentDate;
     private TextView tvAccountNumber;
     private TextView tvIfscCode;
-
     private TextView tvRequestLoan;
     private LottieAnimationView aniLoading;
-
     private FirebaseAuth firebaseAuth;
-
     private static final String TAG = "RequestLoanFragment";
+
+    private LoanOfferResponse gblLoanOfferResponse;
+    private CustomerBankResponse gblCustomerBankResponse;
 
     public RequestLoanFragment() {
     }
@@ -74,6 +77,7 @@ public class RequestLoanFragment extends Fragment implements View.OnClickListene
             String uid = firebaseAuth.getCurrentUser().getUid();
             Toast.makeText(getContext(), ""+uid, Toast.LENGTH_SHORT).show();
             getLoanOffer(uid);
+            fetchCustomerBankAccount(uid);
         }
     }
 
@@ -86,7 +90,7 @@ public class RequestLoanFragment extends Fragment implements View.OnClickListene
 
     private void getLoanOffer(String uid) {
         LoanInterface loanInterface = APIClient.getRetrofitInstance().create(LoanInterface.class);
-        Call<LoanOffer> call = loanInterface.getLoanOffer("dps121447101200");
+        Call<LoanOffer> call = loanInterface.getLoanOffer(uid);
         call.enqueue(new Callback<LoanOffer>() {
             @Override
             public void onResponse(Call<LoanOffer> call, Response<LoanOffer> response) {
@@ -94,6 +98,7 @@ public class RequestLoanFragment extends Fragment implements View.OnClickListene
                 if (response.code() == 200) {
                     for (int i = 0; i < response.body().getData().size(); i++) {
                         LoanOfferResponse loanOfferResponse = response.body().getData().get(i);
+                        gblLoanOfferResponse = loanOfferResponse;
                         setOfferData(loanOfferResponse);
                     }
 
@@ -115,11 +120,32 @@ public class RequestLoanFragment extends Fragment implements View.OnClickListene
         tvRepaymentAmount.setText("₹ "+loanOfferResponse.getAmount());
         tvRepaymentDuration.setText(loanOfferResponse.getDuration()+" days");
         tvRepaymentDate.setText(loanOfferResponse.getRepaymentDate());
-        fetchCustomerBankAccount();
     }
 
-    private void fetchCustomerBankAccount() {
+    private void fetchCustomerBankAccount(String uid) {
+        CustomerInterface customerInterface = APIClient.getRetrofitInstance().create(CustomerInterface.class);
+        Call<CustomerBank> call = customerInterface.getCustomerBanks(uid);
+        call.enqueue(new Callback<CustomerBank>() {
+            @Override
+            public void onResponse(Call<CustomerBank> call, Response<CustomerBank> response) {
+                Log.e(TAG, "onResponse: "+response);
+                for (int i = 0; i == 0; i++) {
+                    CustomerBankResponse customerBankResponse = response.body().getData().get(i);
+                    gblCustomerBankResponse = customerBankResponse;
+                    setBankDetails(customerBankResponse);
+                }
+            }
 
+            @Override
+            public void onFailure(Call<CustomerBank> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void setBankDetails(CustomerBankResponse customerBankResponse) {
+        tvAccountNumber.setText(customerBankResponse.getAccountNumber());
+        tvIfscCode.setText(customerBankResponse.getIfsc());
     }
 
     private void showRequestDialog() {

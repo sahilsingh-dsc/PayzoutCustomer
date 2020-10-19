@@ -21,6 +21,7 @@
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:background="?selectableItemBackground"
+            android:clickable="true"
             android:padding="16dp"
             android:src="@drawable/ic_baseline_arrow_back_white_24" />
 
@@ -107,6 +108,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:focusable="false"
                     android:hint="Name"
+                    android:enabled="false"
                     android:inputType="number"
                     android:maxLength="40"
                     android:paddingStart="16dp"
@@ -189,6 +191,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:focusable="false"
                     android:hint="Name"
+                    android:enabled="false"
                     android:inputType="number"
                     android:maxLength="40"
                     android:paddingStart="16dp"
@@ -239,7 +242,7 @@
             android:gravity="center"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:text="Proceed"
+            android:text="Save &amp; Proceed"
             android:textColor="@color/colorTextH3"
             android:textSize="16sp"
             android:visibility="visible" />

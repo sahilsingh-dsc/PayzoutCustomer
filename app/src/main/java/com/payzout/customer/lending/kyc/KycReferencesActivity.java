@@ -1,14 +1,13 @@
 package com.payzout.customer.lending.kyc;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -16,9 +15,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,13 +28,14 @@ import com.payzout.customer.apis.APIClient;
 import com.payzout.customer.apis.CustomerInterface;
 import com.payzout.customer.lending.model.AddCustomerReference;
 import com.payzout.customer.utils.Constant;
+import com.payzout.customer.utils.PayzoutLoading;
 import com.payzout.customer.utils.SpinnerDataAdapter;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class KycReferencesActivity extends AppCompatActivity {
+public class KycReferencesActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView ivGoBack;
 
@@ -62,6 +64,7 @@ public class KycReferencesActivity extends AppCompatActivity {
 
     private LottieAnimationView aniLoadingRef;
     private LinearLayout lvKycReference;
+    private PayzoutLoading payzoutLoading;
 
     private String[] RELATIONSHIP = {"", "Parent", "Brother", "Sister", "Child", "Friend", "Colleague"};
 
@@ -73,7 +76,8 @@ public class KycReferencesActivity extends AppCompatActivity {
     }
 
     private void initView() {
-
+        ivGoBack = findViewById(R.id.ivGoBack);
+        payzoutLoading = PayzoutLoading.getInstance();
         spinnerRelationship1 = findViewById(R.id.spinnerRelationship1);
         spinnerRelationship2 = findViewById(R.id.spinnerRelationship2);
         tvReferencesProceed = findViewById(R.id.tvReferencesProceed);
@@ -103,13 +107,9 @@ public class KycReferencesActivity extends AppCompatActivity {
 
         setRelationshipInSpinner();
 
-        tvReferencesProceed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(KycReferencesActivity.this, "Clicked", Toast.LENGTH_SHORT).show();
-                proceedReference();
-            }
-        });
+        tvReferencesProceed.setOnClickListener(this);
+        ivGoBack.setOnClickListener(this);
+
     }
 
     private void setRelationshipInSpinner() {
@@ -118,9 +118,20 @@ public class KycReferencesActivity extends AppCompatActivity {
         spinnerRelationship1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                type1 = RELATIONSHIP[position];
-                spinner1 = true;
-                Toast.makeText(KycReferencesActivity.this, "" + type1, Toast.LENGTH_SHORT).show();
+                if (position != 0) {
+                    type1 = RELATIONSHIP[position];
+                    spinner1 = true;
+                    etName1.setEnabled(true);
+                    first();
+                } else {
+                    etName1.setText("");
+                    etName1.setHint("Name");
+                    etPhoneNum1.setText("");
+                    etPhoneNum1.setHint("Phone number");
+                    spinner1 = false;
+                    etName1.setEnabled(false);
+                    first();
+                }
             }
 
             @Override
@@ -129,12 +140,24 @@ public class KycReferencesActivity extends AppCompatActivity {
             }
         });
         spinnerRelationship1.setAdapter(spinnerDataAdapter);
-        spinnerRelationship2.setAdapter(spinnerDataAdapter);
+
         spinnerRelationship2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                type2 = RELATIONSHIP[position];
-                spinner2 = true;
+                if (position != 0) {
+                    type2 = RELATIONSHIP[position];
+                    spinner2 = true;
+                    etName2.setEnabled(true);
+                    first();
+                } else {
+                    etName2.setText("");
+                    etName2.setHint("Name");
+                    etPhoneNum2.setText("");
+                    etPhoneNum2.setHint("Phone number");
+                    spinner2 = false;
+                    etName2.setEnabled(false);
+                    first();
+                }
             }
 
             @Override
@@ -142,6 +165,7 @@ public class KycReferencesActivity extends AppCompatActivity {
 
             }
         });
+        spinnerRelationship2.setAdapter(spinnerDataAdapter);
     }
 
     @Override
@@ -153,7 +177,6 @@ public class KycReferencesActivity extends AppCompatActivity {
                     Uri contactData = data.getData();
                     Cursor c = getContentResolver().query(contactData, null, null, null, null);
                     if (c.moveToFirst()) {
-
                         String contactId = c.getString(c.getColumnIndex(ContactsContract.Contacts._ID));
                         String contactName = c.getString(c.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
                         String hasNumber = c.getString(c.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER));
@@ -164,20 +187,34 @@ public class KycReferencesActivity extends AppCompatActivity {
                             while (numbers.moveToNext()) {
                                 num = numbers.getString(numbers.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
                                 if (refType == Constant.REF_CONTACT_1) {
-                                    number1 = num;
-                                    name_1 = contactName;
-                                    etPhoneNum1.setText(num);
-                                    etName1.setText(contactName);
-                                    name1 = true;
+                                    if (!num.isEmpty() && !contactName.isEmpty()) {
+                                        number1 = num;
+                                        name_1 = contactName;
+                                        etPhoneNum1.setText(num);
+                                        etName1.setText(contactName);
+                                        name1 = true;
+                                    } else {
+                                        name1 = false;
+                                    }
+
+                                    first();
+
 
                                 } else if (refType == Constant.REF_CONTACT_2) {
-                                    number2 = num;
-                                    name_2 = contactName;
-                                    etName2.setText(contactName);
-                                    etPhoneNum2.setText(num);
-                                    name2 = true;
+                                    if (!num.isEmpty() && !contactName.isEmpty()) {
+                                        number2 = num;
+                                        name_2 = contactName;
+                                        etName2.setText(contactName);
+                                        etPhoneNum2.setText(num);
+                                        name2 = true;
+                                    } else {
+                                        name2 = false;
+                                    }
+
+                                    first();
+
                                 }
-                                first();
+
                             }
                         }
                     }
@@ -192,15 +229,12 @@ public class KycReferencesActivity extends AppCompatActivity {
             tvReferencesProceed.setBackground(getResources().getDrawable(R.drawable.bg_button));
         } else {
             tvReferencesProceed.setEnabled(false);
-            tvReferencesProceed.setBackground(getResources().getDrawable(R.drawable.bg_button));
+            tvReferencesProceed.setBackground(getResources().getDrawable(R.drawable.bg_button_disabled));
         }
-
-
     }
 
 
     private void proceedReference() {
-
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference reference = db.collection("reference").document();
         String id = reference.getId();
@@ -210,26 +244,37 @@ public class KycReferencesActivity extends AppCompatActivity {
         addCustomerReferenceCall.enqueue(new Callback<AddCustomerReference>() {
             @Override
             public void onResponse(Call<AddCustomerReference> call, Response<AddCustomerReference> response) {
-                Log.e(TAG, "onResponse: " + response.code() + response.message());
-                {
-                    if (response.code() == 200) {
-                        Log.e(TAG, "onResponse: UPLOADED");
-                        Toast.makeText(KycReferencesActivity.this, "Done", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(KycReferencesActivity.this, KycBankActivity.class);
-                        startActivity(intent);
-                    } else if (response.code() == 400) {
-                        Log.e(TAG, "onResponse: " + response.message());
-                        Toast.makeText(KycReferencesActivity.this, "Not Uploaded", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(KycReferencesActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
-                    }
+                payzoutLoading.hideProgress();
+                if (response.code() == 200) {
+                    Intent intent = new Intent(KycReferencesActivity.this, KycBankActivity.class);
+                    startActivity(intent);
+                } else if (response.code() == 400) {
+                    Snackbar.make(lvKycReference, "Something went wrong, Try again", Snackbar.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<AddCustomerReference> call, Throwable t) {
-                Log.e(TAG, "onFailure: " + t.getMessage());
+                payzoutLoading.hideProgress();
+                Snackbar.make(lvKycReference, "Something went wrong, Try again", Snackbar.LENGTH_LONG).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == tvReferencesProceed) {
+            payzoutLoading.showProgress(KycReferencesActivity.this);
+            proceedReference();
+        }
+        if (view == ivGoBack) {
+            onBackPressed();
+        }
     }
 }

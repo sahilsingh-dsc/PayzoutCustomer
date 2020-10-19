@@ -2,7 +2,6 @@ package com.payzout.customer.lending.kyc;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,20 +14,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import com.airbnb.lottie.LottieAnimationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.payzout.customer.R;
 import com.payzout.customer.apis.APIClient;
 import com.payzout.customer.apis.CustomerInterface;
 import com.payzout.customer.lending.model.CustomerKycDetails;
-import com.payzout.customer.utils.SpinnerDataAdapter;
 import com.payzout.customer.utils.Constant;
 import com.payzout.customer.utils.DatePickerFragment;
+import com.payzout.customer.utils.PayzoutLoading;
+import com.payzout.customer.utils.SpinnerDataAdapter;
 
 import java.util.Calendar;
 
@@ -92,11 +92,10 @@ public class KycDetailsActivity extends AppCompatActivity implements View.OnClic
     private String[] EDUCATION = {"", "Higher Secondary", "Senior Secondary", "Under Graduation", "Post Graduation"};
     private String[] LANGUAGE = {"", "English", "Hindi", "Others"};
     private String[] STATES;
-
-    private SharedPreferences preferences;
-
     private FirebaseAuth firebaseAuth;
     private static final String TAG = "KycDetailsActivity";
+    private CustomerInterface customerInterface;
+    private PayzoutLoading payzoutLoading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,9 +105,10 @@ public class KycDetailsActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initView() {
+        payzoutLoading = PayzoutLoading.getInstance();
+        customerInterface = APIClient.getRetrofitInstance().create(CustomerInterface.class);
         firebaseAuth = FirebaseAuth.getInstance();
         aniLoading = findViewById(R.id.aniLoading);
-        preferences = getSharedPreferences("kyc", 0);
 
         ivGoBack = findViewById(R.id.ivGoBack);
         ivGoBack.setOnClickListener(this);
@@ -509,7 +509,6 @@ public class KycDetailsActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void doSubmitDetails() {
-        doShowLoading();
         String uid = firebaseAuth.getCurrentUser().getUid();
         String name = etFullName.getText().toString();
         String dob = etDateOfBirth.getText().toString();
@@ -520,7 +519,6 @@ public class KycDetailsActivity extends AppCompatActivity implements View.OnClic
         String company = etCompanyName.getText().toString();
         String income = etMonthlyIncome.getText().toString();
 
-        CustomerInterface customerInterface = APIClient.getRetrofitInstance().create(CustomerInterface.class);
         Call<CustomerKycDetails> call = customerInterface.submitKyc(
                 uid,
                 name,
@@ -541,24 +539,22 @@ public class KycDetailsActivity extends AppCompatActivity implements View.OnClic
                 "Other"
         );
 
+
         call.enqueue(new Callback<CustomerKycDetails>() {
             @Override
             public void onResponse(Call<CustomerKycDetails> call, Response<CustomerKycDetails> response) {
-                Log.e(TAG, "onResponse: " + response);
-                if (response.code() == 200) {
-                    doHideLoading();
-                    setKycStatusPartial();
+                payzoutLoading.hideProgress();
+                if (response.code() == Constant.HTTP_RESPONSE_SUCCESS) {
                     gotoKycDocumentUpload();
-                } else if (response.code() == 400) {
-                    doHideLoading();
+                } else if (response.code() == Constant.HTTP_RESPONSE_BAD_REQUEST) {
                     gotoKycDocumentUpload();
                 }
             }
 
             @Override
             public void onFailure(Call<CustomerKycDetails> call, Throwable t) {
-                doHideLoading();
-                Snackbar.make(lvCreditApplication, "Something went wrong...", Snackbar.LENGTH_LONG);
+                payzoutLoading.hideProgress();
+                Log.e(TAG, "onFailure: " + t.getMessage());
             }
         });
 
@@ -567,26 +563,6 @@ public class KycDetailsActivity extends AppCompatActivity implements View.OnClic
     private void gotoKycDocumentUpload() {
         Intent intent = new Intent(KycDetailsActivity.this, KycDocumentUploadActivity.class);
         startActivity(intent);
-    }
-
-    private void setKycStatusPartial() {
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("kycStatus", Constant.KYC_PARTIAL);
-        editor.apply();
-    }
-
-    private void doShowLoading() {
-        tvSubmitDetails.setText("");
-        aniLoading.setVisibility(View.VISIBLE);
-        aniLoading.playAnimation();
-        aniLoading.loop(true);
-    }
-
-    private void doHideLoading() {
-        tvSubmitDetails.setText("Proceed");
-        aniLoading.setVisibility(View.GONE);
-        aniLoading.cancelAnimation();
-        aniLoading.loop(false);
     }
 
     @Override
@@ -625,6 +601,7 @@ public class KycDetailsActivity extends AppCompatActivity implements View.OnClic
             doSelectPGResidence();
         }
         if (view == tvSubmitDetails) {
+            payzoutLoading.showProgress(KycDetailsActivity.this);
             doSubmitDetails();
         }
     }

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".lending.main.fragment.VerificationPendingFragment">
+    tools:context=".lending.kyc.KycPendingActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="center"
-            android:text="Under Review"
+            android:text="eKYC Under Review"
             android:textColor="@color/colorPrimary"
             android:textSize="20sp" />
 
@@ -38,7 +39,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
-            android:text="Your loan request is under review, please come back and check after 5 minutes."
+            android:text="Your eKYC pending is under review we will please come back and check after 30 minutes."
             android:textColor="@color/colorTextH1"
             android:textSize="13sp" />
 

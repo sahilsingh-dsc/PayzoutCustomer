@@ -68,4 +68,6 @@ dependencies {
 
     implementation 'com.github.dhaval2404:imagepicker:1.7.5'
 
+    implementation 'com.samigehi:loadingview:1.1'
+
 }
