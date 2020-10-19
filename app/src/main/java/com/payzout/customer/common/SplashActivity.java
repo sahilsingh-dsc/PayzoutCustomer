@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -20,9 +21,14 @@ import com.payzout.customer.apis.APIClient;
 import com.payzout.customer.apis.CustomerInterface;
 import com.payzout.customer.auth.PhoneActivity;
 import com.payzout.customer.auth.model.CheckCustomer;
+import com.payzout.customer.lending.kyc.KycDocumentUploadActivity;
 import com.payzout.customer.lending.kyc.KycOnBoardActivity;
+import com.payzout.customer.lending.kyc.KycPendingActivity;
+import com.payzout.customer.lending.kyc.KycRejectedActivity;
+import com.payzout.customer.lending.main.LendingMainActivity;
 import com.payzout.customer.modules.kyc.KycActivity;
 import com.payzout.customer.modules.loan.PLActivity;
+import com.payzout.customer.utils.Constant;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -63,12 +69,6 @@ public class SplashActivity extends AppCompatActivity {
 
     private void gotoLogin() {
         Intent intent = new Intent(SplashActivity.this, PhoneActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    private void gotoMain() {
-        Intent intent = new Intent(SplashActivity.this, PLActivity.class);
         startActivity(intent);
         finish();
     }
@@ -114,14 +114,26 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CheckCustomer> call, Response<CheckCustomer> response) {
                 if (response.code() == 200) {
+                    Log.e(TAG, "onResponse: " + response.body().getStatus());
                     int status = response.body().getStatus();
-                    if (status == 0) {
-                        showCustomerBan();
-                    } else if (status == 1) {
-                        gotoLendingMain();
+                    switch (status) {
+                        case Constant.KYC_BAN:
+                            showCustomerBan();
+                            break;
+                        case Constant.KYC_NONE:
+                            gotoKycOnBoarding();
+                            break;
+                        case Constant.KYC_PENDING:
+                            gotoKycPending();
+                            break;
+                        case Constant.KYC_APPROVED:
+                            gotoLendingMain();
+                            break;
+                        case Constant.KYC_REJECTED:
+                            gotoKycRejected();
                     }
                 } else if (response.code() == 400) {
-                    gotoLendingMain();
+                    gotoKycOnBoarding();
                 }
             }
 
@@ -132,8 +144,26 @@ public class SplashActivity extends AppCompatActivity {
         });
     }
 
-    private void gotoLendingMain() {
+    private void gotoKycRejected() {
+        Intent intent = new Intent(SplashActivity.this, KycRejectedActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void gotoKycPending() {
+        Intent intent = new Intent(SplashActivity.this, KycPendingActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void gotoKycOnBoarding() {
         Intent intent = new Intent(SplashActivity.this, KycOnBoardActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    private void gotoLendingMain() {
+        Intent intent = new Intent(SplashActivity.this, LendingMainActivity.class);
         startActivity(intent);
         finish();
     }

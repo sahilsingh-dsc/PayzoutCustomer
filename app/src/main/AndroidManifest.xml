@@ -16,14 +16,18 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".lending.kyc.KycSubmitForVerificationActivity"></activity>
+        <activity android:name=".lending.kyc.KycRejectedActivity" />
+        <activity android:name=".lending.kyc.KycPendingActivity" />
         <activity android:name=".lending.main.LendingMainActivity" />
         <activity android:name=".lending.kyc.KycReferencesActivity" />
         <activity android:name=".scanner.SelfieActivity" />
-        <activity android:name=".common.SplashActivity" />
+        <activity android:name=".lending.kyc.KycBankActivity" />
         <activity android:name=".lending.kyc.KycDocumentUploadActivity" />
         <activity android:name=".lending.kyc.KycDetailsActivity" />
         <activity android:name=".lending.kyc.KycOnBoardActivity" />
@@ -38,12 +42,15 @@
         <activity android:name=".modules.loan.PLActivity" />
         <activity android:name=".auth.CodeActivity" />
         <activity android:name=".auth.PhoneActivity" />
-        <activity android:name=".lending.kyc.KycBankActivity">
+        <activity android:name=".common.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service android:name=".service.ContactUploadService" />
     </application>
+
 </manifest>

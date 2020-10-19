@@ -12,4 +12,9 @@
         <item name="fontFamily">@font/montserrat</item>
     </style>
 
+    <style name="DDLoading" parent="android:Theme.Holo.Dialog.NoActionBar">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+
 </resources>

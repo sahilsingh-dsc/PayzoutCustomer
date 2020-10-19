@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/lvDoc"
     tools:context=".lending.kyc.KycDocumentUploadActivity">
 
     <LinearLayout
@@ -70,9 +71,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:textSize="14sp"
                 android:fontFamily="@font/montserrat"
-                android:textColor="@color/colorTextH2"
                 android:text="Please provide required documents with accurate information for faster processing."/>
 
             <LinearLayout
@@ -95,12 +94,30 @@
                         android:layout_height="200dp"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/ivYourSelfie"
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_baseline_image_24" />
+                            android:layout_gravity="center">
+
+
+                            <ImageView
+                                android:id="@+id/ivYourSelfie"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_baseline_image_24" />
+
+                            <ProgressBar
+                                android:id="@+id/progressPhoto"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:indeterminateDrawable="@drawable/progress"/>
+
+                        </FrameLayout>
 
                         <View
                             android:layout_width="match_parent"
@@ -137,12 +154,30 @@
                         android:layout_height="200dp"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/ivPan"
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_baseline_image_24" />
+                            android:layout_gravity="center">
+
+
+                            <ImageView
+                                android:id="@+id/ivPan"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_baseline_image_24" />
+
+                            <ProgressBar
+                                android:id="@+id/progressPan"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:indeterminateDrawable="@drawable/progress"/>
+
+                        </FrameLayout>
 
                         <View
                             android:layout_width="match_parent"
@@ -169,6 +204,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
@@ -186,12 +222,30 @@
                         android:layout_height="200dp"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/ivAadhaarFront"
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_baseline_image_24" />
+                            android:layout_gravity="center">
+
+
+                            <ImageView
+                                android:id="@+id/ivAadhaarFront"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_baseline_image_24" />
+
+                            <ProgressBar
+                                android:id="@+id/progressFront"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:indeterminateDrawable="@drawable/progress"/>
+
+                        </FrameLayout>
 
                         <View
                             android:layout_width="match_parent"
@@ -228,12 +282,30 @@
                         android:layout_height="200dp"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/ivAadhaarBack"
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_baseline_image_24" />
+                            android:layout_gravity="center">
+
+
+                            <ImageView
+                                android:id="@+id/ivAadhaarBack"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_baseline_image_24" />
+
+                            <ProgressBar
+                                android:id="@+id/progressBack"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:indeterminateDrawable="@drawable/progress"/>
+
+                        </FrameLayout>
 
                         <View
                             android:layout_width="match_parent"
@@ -263,6 +335,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:visibility="gone"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Optional Documents"
                 android:textColor="@color/colorPrimary"
@@ -274,8 +347,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:textSize="14sp"
-                android:textColor="@color/colorTextH2"
+                android:visibility="gone"
                 android:fontFamily="@font/montserrat"
                 android:text="Optional documents may give you higher credit limit and faster processing."/>
 
@@ -283,6 +355,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:visibility="gone"
                 android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
@@ -300,12 +373,31 @@
                         android:layout_height="200dp"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/ivDL"
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_baseline_image_24" />
+                            android:layout_gravity="center">
+
+
+                            <ImageView
+                                android:id="@+id/ivDL"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_baseline_image_24" />
+
+                            <ProgressBar
+                                android:id="@+id/progressDL"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:indeterminateDrawable="@drawable/progress"/>
+
+                        </FrameLayout>
 
                         <View
                             android:layout_width="match_parent"
@@ -328,6 +420,7 @@
 
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardBS"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
@@ -341,11 +434,31 @@
                         android:layout_height="200dp"
                         android:orientation="vertical">
 
-                        <ImageView
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
                             android:layout_weight="1"
-                            android:src="@drawable/ic_baseline_library_books_24" />
+                            android:layout_gravity="center">
+
+
+                            <ImageView
+                                android:id="@+id/ivBankStatement"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_baseline_image_24" />
+
+                            <ProgressBar
+                                android:id="@+id/progressBS"
+                                android:visibility="gone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:indeterminateDrawable="@drawable/progress"/>
+
+                        </FrameLayout>
 
                         <View
                             android:layout_width="match_parent"
@@ -390,7 +503,7 @@
             android:gravity="center"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
-            android:text="Submit for review"
+            android:text="Save &amp; Proceed"
             android:textColor="@color/colorTextH3"
             android:textSize="16sp"
             android:visibility="visible" />

@@ -1,66 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".lending.main.fragment.VerificationPendingFragment">
+    tools:context=".lending.kyc.KycRejectedActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:orientation="vertical"
         android:layout_weight="1"
         android:gravity="center"
-        android:orientation="vertical">
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp">
+
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="match_parent"
             android:layout_height="300dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/wait1" />
+            app:lottie_rawRes="@raw/sad"/>
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="center"
-            android:text="Under Review"
+            android:text="eKYC Rejected"
             android:textColor="@color/colorPrimary"
-            android:textSize="20sp" />
+            android:textSize="20sp"/>
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
-            android:text="Your loan request is under review, please come back and check after 5 minutes."
+            android:text="Sorry we can not move forward your application. You can Re-apply after 7 days."
             android:textColor="@color/colorTextH1"
             android:textSize="13sp" />
-
-
     </LinearLayout>
 
+
     <TextView
-        android:id="@+id/tvSaveAccountDetails"
+        android:id="@+id/tvRetryLoan"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_margin="16dp"
-        android:background="@drawable/bg_button"
+        android:background="@drawable/bg_button_disabled"
         android:enabled="false"
         android:fontFamily="@font/montserrat_bold"
         android:gravity="center"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
-        android:text="Refresh"
+        android:text="Re-apply"
         android:textColor="@color/colorTextH3"
         android:textSize="16sp"
-        android:visibility="visible" />
-
+        android:visibility="visible"/>
 
 </LinearLayout>
