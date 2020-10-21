@@ -72,6 +72,8 @@ public class ManageAccountFragment extends Fragment implements View.OnClickListe
         recyclerPortfolio.setLayoutManager(new LinearLayoutManager(getContext()));
         lvNoData = view.findViewById(R.id.lvNoData);
 
+
+
         CustomerInterface customerInterface = APIClient.getRetrofitInstance().create(CustomerInterface.class);
         Call<LoanRecords> loanRecordsCall = customerInterface.getLoanRecords("dps1214");
         loanRecordsCall.enqueue(new Callback<LoanRecords>() {
