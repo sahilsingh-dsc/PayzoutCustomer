@@ -201,7 +201,7 @@ public class KycReferencesActivity extends AppCompatActivity implements View.OnC
 
 
                                 } else if (refType == Constant.REF_CONTACT_2) {
-                                    if (!num.isEmpty() && !contactName.isEmpty()) {
+                                    if (!num.isEmpty() && !contactName.isEmpty() ) {
                                         number2 = num;
                                         name_2 = contactName;
                                         etName2.setText(contactName);
@@ -224,7 +224,7 @@ public class KycReferencesActivity extends AppCompatActivity implements View.OnC
     }
 
     private void first() {
-        if (spinner1 && spinner2 && name1 && name2) {
+        if (spinner1 && spinner2 && name1 && name2 ) {
             tvReferencesProceed.setEnabled(true);
             tvReferencesProceed.setBackground(getResources().getDrawable(R.drawable.bg_button));
         } else {

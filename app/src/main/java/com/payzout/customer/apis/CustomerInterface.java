@@ -4,6 +4,7 @@ import com.payzout.customer.auth.model.CheckCustomer;
 import com.payzout.customer.lending.model.AddCustomerReference;
 import com.payzout.customer.lending.model.CustomerBank;
 import com.payzout.customer.lending.model.CustomerKycDetails;
+import com.payzout.customer.lending.model.CustomerProfile;
 import com.payzout.customer.lending.model.CustomerStatus;
 import com.payzout.customer.lending.model.KycBankList;
 import com.payzout.customer.lending.model.LoanRecords;
@@ -112,4 +113,8 @@ public interface CustomerInterface {
     @FormUrlEncoded
     @POST("Customer/getLoanRecords")
     Call<LoanRecords> getLoanRecords(@Field("user_id") String user_id);
+
+    @FormUrlEncoded
+    @POST("Customer/getCustomerProfile")
+    Call<CustomerProfile> getCustomerProfile(@Field("user_id") String user_id);
 }

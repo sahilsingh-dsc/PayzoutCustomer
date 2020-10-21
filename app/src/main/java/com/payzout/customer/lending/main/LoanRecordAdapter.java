@@ -1,17 +1,29 @@
 package com.payzout.customer.lending.main;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.payzout.customer.R;
+import com.payzout.customer.lending.kyc.KycPendingActivity;
+import com.payzout.customer.lending.kyc.KycRejectedActivity;
+import com.payzout.customer.lending.main.fragment.DisbursementFragment;
+import com.payzout.customer.lending.main.fragment.LoanPaidFragment;
+import com.payzout.customer.lending.main.fragment.ManageAccountFragment;
+import com.payzout.customer.lending.main.fragment.RepaymentFragment;
 import com.payzout.customer.lending.model.LoanRecords;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class LoanRecordAdapter extends RecyclerView.Adapter<LoanRecordAdapter.LoanRecordViewHolder> {
@@ -31,9 +43,12 @@ public class LoanRecordAdapter extends RecyclerView.Adapter<LoanRecordAdapter.Lo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LoanRecordViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull LoanRecordViewHolder holder, final int position) {
+
+
         holder.tvRecordAmount.setText(""+loanRecordsList.get(position).getDisbursementAmount());
         holder.tvRecordDate.setText(""+loanRecordsList.get(position).getTimestamp());
+
 
         if (loanRecordsList.get(position).getStatus() == 0){
             holder.tvRecordStatus.setText("Rejected");
@@ -54,6 +69,60 @@ public class LoanRecordAdapter extends RecyclerView.Adapter<LoanRecordAdapter.Lo
             holder.tvRecordStatus.setText("Paid");
         }
 
+
+
+        holder.lvLoanRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (loanRecordsList.get(position).getStatus() == 0){
+                    Intent intent = new Intent(context, KycRejectedActivity.class);
+                    context.startActivity(intent);
+                }
+
+                else if (loanRecordsList.get(position).getStatus() == 1){
+                    Intent intent = new Intent(context, KycPendingActivity.class);
+                    context.startActivity(intent);
+                }
+
+                else if (loanRecordsList.get(position).getStatus() == 2){
+                    Fragment fragment = new DisbursementFragment();
+                    FragmentManager fragmentManager = ((LendingMainActivity) context).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frameContent, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+
+                else if (loanRecordsList.get(position).getStatus() == 3){
+                    Fragment fragment = new RepaymentFragment();
+                    FragmentManager fragmentManager = ((LendingMainActivity) context).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frameContent, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+
+                else if (loanRecordsList.get(position).getStatus() == 4){
+                    Fragment fragment = new RepaymentFragment();
+                    FragmentManager fragmentManager = ((LendingMainActivity) context).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frameContent, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+
+                else if (loanRecordsList.get(position).getStatus() == 5){
+                    Fragment fragment = new LoanPaidFragment();
+                    FragmentManager fragmentManager = ((LendingMainActivity) context).getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.frameContent, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                }
+            }
+        });
+
     }
 
     @Override
@@ -66,6 +135,7 @@ public class LoanRecordAdapter extends RecyclerView.Adapter<LoanRecordAdapter.Lo
         private TextView tvRecordAmount;
         private TextView tvRecordDate;
         private TextView tvRecordStatus;
+        private LinearLayout lvLoanRecord;
 
         public LoanRecordViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,6 +143,7 @@ public class LoanRecordAdapter extends RecyclerView.Adapter<LoanRecordAdapter.Lo
             tvRecordAmount = itemView.findViewById(R.id.tvRecordAmount);
             tvRecordDate = itemView.findViewById(R.id.tvRecordDate);
             tvRecordStatus = itemView.findViewById(R.id.tvRecordStatus);
+            lvLoanRecord = itemView.findViewById(R.id.lvLoanRecord);
         }
     }
 }

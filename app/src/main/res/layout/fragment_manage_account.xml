@@ -42,16 +42,33 @@
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Hello, Sahil Singh"
-        android:textColor="@color/colorTextH1"
-        android:textSize="16sp" />
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Hello, "
+            android:textColor="@color/colorTextH1"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/montserrat"
+            android:hint="Sahil Singh"
+            android:textColor="@color/colorTextH1"
+            android:textSize="16sp" />
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="match_parent"

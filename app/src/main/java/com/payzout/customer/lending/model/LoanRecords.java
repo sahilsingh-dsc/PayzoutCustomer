@@ -52,7 +52,7 @@ public class LoanRecords {
 
         @SerializedName("id")
         @Expose
-        private String id;
+        public String id;
         @SerializedName("plan_id")
         @Expose
         private Integer planId;

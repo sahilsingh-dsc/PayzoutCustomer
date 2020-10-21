@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -19,6 +20,7 @@ import com.payzout.customer.apis.APIClient;
 import com.payzout.customer.apis.CustomerInterface;
 import com.payzout.customer.auth.PhoneActivity;
 import com.payzout.customer.lending.main.LoanRecordAdapter;
+import com.payzout.customer.lending.model.CustomerProfile;
 import com.payzout.customer.lending.model.LoanRecords;
 
 import androidx.fragment.app.Fragment;
@@ -31,6 +33,8 @@ import retrofit2.Response;
 public class ManageAccountFragment extends Fragment implements View.OnClickListener {
 
     private View view;
+
+    private TextView tvName;
 
     private ImageView ivLogout;
     private ImageView ivHelp;
@@ -57,6 +61,7 @@ public class ManageAccountFragment extends Fragment implements View.OnClickListe
     }
 
     private void initView() {
+        tvName = view.findViewById(R.id.tvName);
         ivHelp = view.findViewById(R.id.ivHelp);
         ivHelp.setOnClickListener(this);
         ivLogout = view.findViewById(R.id.ivLogout);
@@ -68,7 +73,7 @@ public class ManageAccountFragment extends Fragment implements View.OnClickListe
         lvNoData = view.findViewById(R.id.lvNoData);
 
         CustomerInterface customerInterface = APIClient.getRetrofitInstance().create(CustomerInterface.class);
-        Call<LoanRecords> loanRecordsCall = customerInterface.getLoanRecords(user_id);
+        Call<LoanRecords> loanRecordsCall = customerInterface.getLoanRecords("dps1214");
         loanRecordsCall.enqueue(new Callback<LoanRecords>() {
             @Override
             public void onResponse(Call<LoanRecords> call, Response<LoanRecords> response) {
@@ -94,6 +99,31 @@ public class ManageAccountFragment extends Fragment implements View.OnClickListe
             @Override
             public void onFailure(Call<LoanRecords> call, Throwable t) {
                 Log.e(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+
+        Call<CustomerProfile> customerProfileCall = customerInterface.getCustomerProfile(user_id);
+        customerProfileCall.enqueue(new Callback<CustomerProfile>() {
+            @Override
+            public void onResponse(Call<CustomerProfile> call, Response<CustomerProfile> response) {
+                Log.e(TAG, "onResponse: " + response.code() + response.body() + response.message());
+                if (response.code() == 200){
+                    tvName.setText(response.body().getData().getFullName());
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CustomerProfile> call, Throwable t) {
+
+            }
+        });
+
+        recyclerPortfolio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
 
