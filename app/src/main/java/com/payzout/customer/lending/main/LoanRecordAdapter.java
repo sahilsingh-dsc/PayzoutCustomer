@@ -2,6 +2,7 @@ package com.payzout.customer.lending.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,6 +106,10 @@ public class LoanRecordAdapter extends RecyclerView.Adapter<LoanRecordAdapter.Lo
 
                 else if (loanRecordsList.get(position).getStatus() == 4){
                     Fragment fragment = new RepaymentFragment();
+                    Bundle bundle = new Bundle();
+                    String id = null;
+                    bundle.putString("id" , id);
+                    fragment.setArguments(bundle);
                     FragmentManager fragmentManager = ((LendingMainActivity) context).getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.frameContent, fragment);
@@ -114,6 +119,10 @@ public class LoanRecordAdapter extends RecyclerView.Adapter<LoanRecordAdapter.Lo
 
                 else if (loanRecordsList.get(position).getStatus() == 5){
                     Fragment fragment = new LoanPaidFragment();
+                    Bundle bundle = new Bundle();
+                    String id = null;
+                    bundle.putString("id" , id);
+                    fragment.setArguments(bundle);
                     FragmentManager fragmentManager = ((LendingMainActivity) context).getSupportFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.frameContent, fragment);

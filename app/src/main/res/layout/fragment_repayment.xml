@@ -110,15 +110,21 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:padding="24dp">
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/ivGoBack"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="?selectableItemBackground"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_baseline_arrow_back_white_24" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
                     android:fontFamily="@font/montserrat_bold"
-                    android:gravity="center"
+                    android:layout_gravity="center"
                     android:text="Loan Repayment"
                     android:textColor="@color/colorTextH3"
                     android:textSize="20sp" />
@@ -414,7 +420,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/tvRepaymentDate"
+                    android:id="@+id/tvTotalRepaymentAmount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat_bold"
@@ -452,7 +458,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvRequestLoan"
+            android:id="@+id/tvRepayLoan"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center"
@@ -465,14 +471,6 @@
             android:textColor="@color/colorTextH3"
             android:textSize="16sp"
             android:visibility="visible" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/aniLoading"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            app:lottie_rawRes="@raw/pb_loading" />
 
     </FrameLayout>
 

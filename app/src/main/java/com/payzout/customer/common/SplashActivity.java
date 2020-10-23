@@ -2,6 +2,7 @@ package com.payzout.customer.common;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,6 +41,7 @@ public class SplashActivity extends AppCompatActivity {
     private CustomerInterface customerInterface;
     private static final String TAG = "SplashActivity";
     private FrameLayout frameSplash;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

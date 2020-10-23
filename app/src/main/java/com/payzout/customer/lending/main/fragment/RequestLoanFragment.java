@@ -90,7 +90,7 @@ public class RequestLoanFragment extends Fragment implements View.OnClickListene
 
     private void getLoanOffer(String uid) {
         LoanInterface loanInterface = APIClient.getRetrofitInstance().create(LoanInterface.class);
-        Call<LoanOffer> call = loanInterface.getLoanOffer(uid);
+        Call<LoanOffer> call = loanInterface.getLoanOffer("dps121447101200");
         call.enqueue(new Callback<LoanOffer>() {
             @Override
             public void onResponse(Call<LoanOffer> call, Response<LoanOffer> response) {
@@ -124,7 +124,7 @@ public class RequestLoanFragment extends Fragment implements View.OnClickListene
 
     private void fetchCustomerBankAccount(String uid) {
         CustomerInterface customerInterface = APIClient.getRetrofitInstance().create(CustomerInterface.class);
-        Call<CustomerBank> call = customerInterface.getCustomerBanks(uid);
+        Call<CustomerBank> call = customerInterface.getCustomerBanks("dps121447101200");
         call.enqueue(new Callback<CustomerBank>() {
             @Override
             public void onResponse(Call<CustomerBank> call, Response<CustomerBank> response) {
