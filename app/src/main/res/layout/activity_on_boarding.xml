@@ -6,27 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".common.OnBoardingActivity">
 
-    <TextView
-        android:id="@+id/tvSkip"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/btn_bg_gradient"
-        android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
-        android:text="SKIP"
-
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/onBoardingViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/layoutOnBoardingIndicators"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/layoutOnBoardingIndicators"
@@ -34,11 +20,29 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center|center_horizontal"
         android:orientation="horizontal"
         android:padding="15dp"
+        app:layout_constraintTop_toBottomOf="@id/onBoardingViewPager"
         app:layout_constraintBottom_toTopOf="@+id/tvSkip"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSkip"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/btn_bg_gradient"
+        android:fontFamily="@font/montserrat_bold"
+        android:gravity="center"
+        android:text="SKIP"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

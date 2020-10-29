@@ -49,6 +49,7 @@
                     android:src="@drawable/home_active" />
 
                 <TextView
+                    android:id="@+id/tvHome"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center"
                     android:layout_height="wrap_content"
@@ -76,6 +77,7 @@
                     android:src="@drawable/loan_active" />
 
                 <TextView
+                    android:id="@+id/tvLoan"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center"
                     android:layout_height="wrap_content"
@@ -103,6 +105,7 @@
                     android:src="@drawable/return_active" />
 
                 <TextView
+                    android:id="@+id/tvRepayment"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center"
                     android:layout_height="wrap_content"
@@ -130,6 +133,7 @@
                     android:src="@drawable/user_active" />
 
                 <TextView
+                    android:id="@+id/tvProfile"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center"
                     android:layout_height="wrap_content"

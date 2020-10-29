@@ -7,7 +7,7 @@
     <ImageView
         android:id="@+id/imageOnboarding"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="400dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/app_name"
         android:scaleType="centerCrop"
@@ -19,11 +19,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/montserrat"
         android:text="Invest with Payzout business we provide a dedicated manager for you to help"
         android:textAlignment="center"
         android:textColor="#383838"
-        android:textSize="20sp" />
+        android:textSize="16sp" />
 </LinearLayout>

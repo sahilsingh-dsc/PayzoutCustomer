@@ -61,9 +61,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 checkPermission();
-//                Intent intent = new Intent(SplashActivity.this, OnBoardingActivity.class);
-//                startActivity(intent);
-//                finish();
+
             }
         }, 3000);
     }
@@ -102,12 +100,19 @@ public class SplashActivity extends AppCompatActivity {
                 checkUser(firebaseAuth.getCurrentUser().getUid());
 
             } else {
-                gotoLogin();
+               // gotoLogin();
+                goToOnaboard();
             }
 
         } else {
             gotoPermission();
         }
+    }
+
+    private void goToOnaboard() {
+        Intent intent = new Intent(SplashActivity.this, OnBoardingActivity.class);
+                startActivity(intent);
+                finish();
     }
 
     private void checkUser(String uid) {

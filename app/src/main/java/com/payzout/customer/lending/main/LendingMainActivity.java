@@ -1,9 +1,11 @@
 package com.payzout.customer.lending.main;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +24,11 @@ public class LendingMainActivity extends AppCompatActivity implements BottomNavi
     private ImageView ivRepayment;
     private ImageView ivHome;
 
+    private TextView tvLoan;
+    private TextView tvHome;
+    private TextView tvRepayment;
+    private TextView tvProfile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +45,15 @@ public class LendingMainActivity extends AppCompatActivity implements BottomNavi
         ivLoan = findViewById(R.id.ivLoan);
         ivUser = findViewById(R.id.ivUser);
 
+        tvLoan = findViewById(R.id.tvLoan);
+        tvHome = findViewById(R.id.tvHome);
+        tvRepayment = findViewById(R.id.tvRepayment);
+        tvProfile = findViewById(R.id.tvProfile);
+
         ivUser.setOnClickListener(this);
         ivLoan.setOnClickListener(this);
+        ivRepayment.setOnClickListener(this);
+        ivHome.setOnClickListener(this);
     }
 
     @Override
@@ -76,11 +90,76 @@ public class LendingMainActivity extends AppCompatActivity implements BottomNavi
         if (v == ivUser) {
             fragment = new ManageAccountFragment();
             loadFragment(fragment);
+            switchUser();
         }
 
         if (v == ivLoan) {
             fragment = new RequestLoanFragment();
             loadFragment(fragment);
+            switchLoan();
         }
+
+        if (v == ivHome) {
+            switchHome();
+        }
+
+        if (v == ivRepayment) {
+
+            switchRepayment();
+        }
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void switchRepayment() {
+        ivHome.setImageDrawable(getResources().getDrawable(R.drawable.house));
+        ivUser.setImageDrawable(getResources().getDrawable(R.drawable.user));
+        ivLoan.setImageDrawable(getResources().getDrawable(R.drawable.loan));
+        ivRepayment.setImageDrawable(getResources().getDrawable(R.drawable.return_active));
+
+        tvHome.setTextColor(getResources().getColor(R.color.colorTextH1));
+        tvLoan.setTextColor(getResources().getColor(R.color.colorTextH1));
+        tvProfile.setTextColor(getResources().getColor(R.color.colorTextH1));
+        tvRepayment.setTextColor(getResources().getColor(R.color.colorPrimary));
+
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void switchUser() {
+        ivHome.setImageDrawable(getResources().getDrawable(R.drawable.house));
+        ivUser.setImageDrawable(getResources().getDrawable(R.drawable.user_active));
+        ivLoan.setImageDrawable(getResources().getDrawable(R.drawable.loan));
+        ivRepayment.setImageDrawable(getResources().getDrawable(R.drawable.repayement));
+
+        tvHome.setTextColor(getResources().getColor(R.color.colorTextH1));
+        tvLoan.setTextColor(getResources().getColor(R.color.colorTextH1));
+        tvProfile.setTextColor(getResources().getColor(R.color.colorPrimary));
+        tvRepayment.setTextColor(getResources().getColor(R.color.colorTextH1));
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void switchLoan() {
+        ivHome.setImageDrawable(getResources().getDrawable(R.drawable.house));
+        ivUser.setImageDrawable(getResources().getDrawable(R.drawable.user));
+        ivLoan.setImageDrawable(getResources().getDrawable(R.drawable.loan_active));
+        ivRepayment.setImageDrawable(getResources().getDrawable(R.drawable.repayement));
+
+        tvHome.setTextColor(getResources().getColor(R.color.colorTextH1));
+        tvLoan.setTextColor(getResources().getColor(R.color.colorPrimary));
+        tvProfile.setTextColor(getResources().getColor(R.color.colorTextH1));
+        tvRepayment.setTextColor(getResources().getColor(R.color.colorTextH1));
+    }
+
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void switchHome() {
+        ivHome.setImageDrawable(getResources().getDrawable(R.drawable.home_active));
+        ivUser.setImageDrawable(getResources().getDrawable(R.drawable.user));
+        ivLoan.setImageDrawable(getResources().getDrawable(R.drawable.loan));
+        ivRepayment.setImageDrawable(getResources().getDrawable(R.drawable.repayement));
+
+        tvHome.setTextColor(getResources().getColor(R.color.colorPrimary));
+        tvLoan.setTextColor(getResources().getColor(R.color.colorTextH1));
+        tvProfile.setTextColor(getResources().getColor(R.color.colorTextH1));
+        tvRepayment.setTextColor(getResources().getColor(R.color.colorTextH1));
+
     }
 }
