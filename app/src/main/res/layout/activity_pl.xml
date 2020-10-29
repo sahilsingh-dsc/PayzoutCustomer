@@ -53,7 +53,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@drawable/bg_curved_toolbar"
+            android:background="@drawable/header"
             android:orientation="vertical">
 
 

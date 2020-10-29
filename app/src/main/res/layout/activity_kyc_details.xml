@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#F2F2F2"
     tools:context=".lending.kyc.KycDetailsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:layout_height="80dp"
+        android:background="@drawable/header"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -19,29 +20,24 @@
             android:id="@+id/ivGoBack"
             android:layout_width="56dp"
             android:layout_height="56dp"
-            android:background="?selectableItemBackground"
-            android:padding="16dp"
-            android:src="@drawable/ic_baseline_arrow_back_white_24" />
+            android:layout_gravity="top"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:padding="12dp"
+            android:src="@drawable/ic_baseline_keyboard_arrow_left_24"
+            tools:targetApi="lollipop" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="top"
             android:gravity="center"
             android:text="eKyc Details"
             android:textColor="@color/colorTextH3"
-            android:textSize="16sp" />
+            android:textSize="16sp"/>
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Please fill accurate information for faster credit assessment, inaccurate information may lead to rejection."
-        android:textColor="@color/colorTextH2"
-        android:textSize="12sp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -60,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Basic Information"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorTextH1"
                 android:textSize="20sp" />
 
             <View
@@ -74,22 +70,18 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Full name"
-                    android:textColor="@color/colorTextH1" />
+
 
                 <EditText
                     android:id="@+id/etFullName"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/bg_textbox"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:layout_height="40dp"
+                    android:background="#FFFFFF"
+                    android:fontFamily="@font/montserrat"
                     android:hint="Full Name"
                     android:inputType="textPersonName"
+                    android:textColor="@color/colorTextH1"
+                    android:textColorHint="@color/colorTextH1"
                     android:maxLength="40"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
@@ -107,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat"
                     android:text="Gender"
                     android:textColor="@color/colorTextH1" />
 
@@ -119,11 +111,11 @@
                     <TextView
                         android:id="@+id/tvMale"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_cards_unselected"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="center"
                         android:padding="8dp"
                         android:text="Male" />
@@ -131,11 +123,11 @@
                     <TextView
                         android:id="@+id/tvFemale"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_cards_unselected"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="center"
                         android:padding="8dp"
                         android:text="Female" />
@@ -150,21 +142,17 @@
                 android:layout_marginTop="16dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Date of birth"
-                    android:textColor="@color/colorTextH1" />
+
 
                 <EditText
                     android:id="@+id/etDateOfBirth"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/bg_textbox"
                     android:focusable="false"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:textColor="@color/colorTextH1"
+                    android:fontFamily="@font/montserrat"
+                    android:textColorHint="@color/colorTextH1"
                     android:hint="Date of birth"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
@@ -178,20 +166,14 @@
                 android:layout_marginTop="16dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Personal email"
-                    android:textColor="@color/colorTextH1" />
-
                 <EditText
                     android:id="@+id/etEmail"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/bg_textbox"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorTextH1"
+                    android:textColorHint="@color/colorTextH1"
                     android:hint="Personal email"
                     android:inputType="textEmailAddress"
                     android:paddingStart="16dp"
@@ -210,7 +192,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat"
                     android:text="Marital status"
                     android:textColor="@color/colorTextH1" />
 
@@ -222,11 +204,11 @@
                     <TextView
                         android:id="@+id/tvSingle"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_cards_unselected"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="center"
                         android:padding="8dp"
                         android:text="Single" />
@@ -234,11 +216,11 @@
                     <TextView
                         android:id="@+id/tvMarried"
                         android:layout_width="wrap_content"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_cards_unselected"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="center"
                         android:padding="8dp"
                         android:text="Married" />
@@ -257,7 +239,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat"
                     android:text="Education"
                     android:textColor="@color/colorTextH1" />
 
@@ -279,7 +261,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat"
                     android:text="Language"
                     android:textColor="@color/colorTextH1" />
 
@@ -297,7 +279,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Residence Information"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorTextH1"
                 android:textSize="20sp" />
 
             <View
@@ -317,7 +299,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat"
                     android:text="Select your residence type?"
                     android:textColor="@color/colorTextH1" />
 
@@ -329,11 +311,11 @@
                     <TextView
                         android:id="@+id/tvOwned"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_cards_unselected"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="center"
                         android:padding="8dp"
                         android:text="Owned" />
@@ -341,11 +323,11 @@
                     <TextView
                         android:id="@+id/tvRented"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_cards_unselected"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="center"
                         android:padding="8dp"
                         android:text="Rented" />
@@ -353,11 +335,11 @@
                     <TextView
                         android:id="@+id/tvPG"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_cards_unselected"
-                        android:fontFamily="@font/montserrat_bold"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="center"
                         android:padding="8dp"
                         android:text="PG" />
@@ -372,21 +354,17 @@
                 android:layout_marginTop="16dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Address"
-                    android:textColor="@color/colorTextH1" />
+
 
                 <EditText
                     android:id="@+id/etAddressLine"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/bg_textbox"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat"
                     android:hint="Address"
+                    android:textColor="@color/colorTextH1"
+                    android:textColorHint="@color/colorTextH1"
                     android:inputType="textPostalAddress"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
@@ -404,7 +382,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat"
                     android:text="State"
                     android:textColor="@color/colorTextH1" />
 
@@ -422,20 +400,15 @@
                 android:layout_marginTop="16dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="City"
-                    android:textColor="@color/colorTextH1" />
 
                 <EditText
                     android:id="@+id/etCity"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/bg_textbox"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat"
+                    android:textColorHint="@color/colorTextH1"
+                    android:textColor="@color/colorTextH1"
                     android:hint="City"
                     android:inputType="textCapSentences"
                     android:paddingStart="16dp"
@@ -450,22 +423,17 @@
                 android:layout_marginTop="16dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Pincode"
-                    android:textColor="@color/colorTextH1" />
 
                 <EditText
                     android:id="@+id/etPincode"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/bg_textbox"
-                    android:fontFamily="@font/montserrat_bold"
+                    android:fontFamily="@font/montserrat"
                     android:hint="@string/pincode"
                     android:inputType="number"
+                    android:textColor="@color/colorTextH1"
+                    android:textColorHint="@color/colorTextH1"
                     android:maxLength="6"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
@@ -479,7 +447,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Employment Information"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorTextH1"
                 android:textSize="20sp" />
 
             <View
@@ -512,7 +480,7 @@
                     <TextView
                         android:id="@+id/tvSalaried"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_cards_unselected"
@@ -524,7 +492,7 @@
                     <TextView
                         android:id="@+id/tvSelfEmployed"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:layout_margin="2dp"
                         android:layout_weight="1"
                         android:background="@drawable/bg_cards_unselected"
@@ -541,21 +509,16 @@
                     android:layout_marginTop="16dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:text="Company name"
-                        android:textColor="@color/colorTextH1" />
 
                     <EditText
                         android:id="@+id/etCompanyName"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="40dp"
                         android:background="@drawable/bg_textbox"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:hint="Eg. Tetraval Startups Pvt Ltd"
+                        android:fontFamily="@font/montserrat"
+                        android:textColorHint="@color/colorTextH1"
+                        android:textColor="@color/colorTextH1"
+                        android:hint="Company Name"
                         android:inputType="textPostalAddress"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
@@ -569,24 +532,19 @@
                     android:layout_marginTop="16dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="4dp"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:text="Monthly income"
-                        android:textColor="@color/colorTextH1" />
 
                     <EditText
                         android:id="@+id/etMonthlyIncome"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:background="@drawable/bg_textbox"
-                        android:fontFamily="@font/montserrat_bold"
-                        android:hint="Eg. 20000"
+                        android:layout_height="40dp"
+                        android:background="@drawable/et_bg"
+                        android:fontFamily="@font/montserrat"
+                        android:hint="@string/monthly_income"
                         android:inputType="number"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:textColor="@color/colorTextH1"
+                        android:textColorHint="@color/colorTextH1"
                         android:textSize="16sp" />
 
                 </LinearLayout>

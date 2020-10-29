@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/lvKycReference"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F2F2F2"
     android:orientation="vertical"
     tools:context=".lending.kyc.KycReferencesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:layout_height="80dp"
+        android:background="@drawable/header"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -20,6 +20,7 @@
             android:id="@+id/ivGoBack"
             android:layout_width="56dp"
             android:layout_height="56dp"
+            android:layout_gravity="top"
             android:background="?selectableItemBackground"
             android:clickable="true"
             android:padding="16dp"
@@ -28,6 +29,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/montserrat_bold"
             android:gravity="center"
             android:text="Urgent References"
@@ -35,15 +38,6 @@
             android:textSize="16sp" />
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Please fill accurate information for faster credit assessment, inaccurate information may lead to rejection."
-        android:textColor="@color/colorTextH2"
-        android:textSize="12sp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -91,46 +85,30 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_textbox" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Name"
-                    android:textColor="@color/colorTextH1"/>
-
                 <EditText
                     android:id="@+id/etName1"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/bg_textbox"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:focusable="false"
-                    android:hint="Name"
                     android:enabled="false"
+                    android:focusable="false"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:hint="Name"
                     android:inputType="number"
                     android:maxLength="40"
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
                     android:textSize="16sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Phone number"
-                    android:textColor="@color/colorTextH1" />
-
                 <EditText
                     android:id="@+id/etPhoneNum1"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/bg_textbox"
-                    android:fontFamily="@font/montserrat_bold"
                     android:focusable="false"
+                    android:fontFamily="@font/montserrat_bold"
                     android:hint="Phone number"
                     android:inputType="number"
                     android:maxLength="40"
@@ -143,8 +121,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/montserrat_bold"
                 android:layout_marginTop="25dp"
+                android:fontFamily="@font/montserrat_bold"
                 android:text="Reference 2"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
@@ -166,7 +144,7 @@
                     android:layout_marginBottom="4dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:text="Relationship"
-                    android:textColor="@color/colorTextH1"/>
+                    android:textColor="@color/colorTextH1" />
 
                 <Spinner
                     android:id="@+id/spinnerRelationship2"
@@ -174,24 +152,17 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_textbox" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Name"
-                    android:textColor="@color/colorTextH1" />
 
                 <EditText
                     android:id="@+id/etName2"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/bg_textbox"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:focusable="false"
-                    android:hint="Name"
                     android:enabled="false"
+                    android:focusable="false"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:hint="Name"
                     android:inputType="number"
                     android:maxLength="40"
                     android:paddingStart="16dp"
@@ -199,22 +170,14 @@
                     android:textSize="16sp" />
 
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="Phone number"
-                    android:textColor="@color/colorTextH1" />
-
                 <EditText
                     android:id="@+id/etPhoneNum2"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
                     android:background="@drawable/bg_textbox"
-                    android:fontFamily="@font/montserrat_bold"
                     android:focusable="false"
+                    android:fontFamily="@font/montserrat_bold"
                     android:hint="Phone number"
                     android:inputType="number"
                     android:maxLength="40"

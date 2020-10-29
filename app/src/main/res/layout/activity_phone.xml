@@ -1,99 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/framePhone"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:id="@+id/framePhone"
     tools:context=".auth.PhoneActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <ImageView
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-            android:scaleType="centerCrop"
-            android:padding="16dp"
-            android:layout_marginTop="56dp"
-            android:src="@drawable/payzout_full"/>
+            android:layout_width="wrap_content"
+            android:layout_height="400dp"
+            android:src="@drawable/login_screen" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layout_gravity="center"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:background="@drawable/layout_bg"
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Welcome!"
-                android:gravity="center"
-                android:textSize="25sp"
+                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:textColor="@color/colorTextH1"/>
+                android:gravity="center"
+                android:text="Welcome!"
+                android:textColor="@color/colorTextH1"
+                android:textSize="25sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Log your phone number in to get started."
-                android:gravity="center"
-                android:textSize="18sp"
                 android:layout_marginBottom="16dp"
                 android:fontFamily="@font/montserrat"
-                android:textColor="@color/colorTextH2"/>
+                android:gravity="center"
+                android:text="Log your phone number in to get started."
+                android:textColor="@color/colorTextH1"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/etPhoneNumber"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:textSize="16sp"
-                android:inputType="phone"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/bg_textbox"
                 android:fontFamily="@font/montserrat_bold"
                 android:hint="Phone number"
-                android:background="@drawable/bg_textbox"/>
+                android:inputType="phone"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvContinue"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg_gradient"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
-                android:textSize="16sp"
-                android:fontFamily="@font/montserrat_bold"
-                android:background="@drawable/bg_button"
+                android:text="Continue"
                 android:textColor="@color/colorTextH3"
-                android:gravity="center"
-                android:layout_marginTop="16dp"
-                android:text="Continue"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <com.tylersuehr.socialtextview.SocialTextView
-        android:id="@+id/stvTerms"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="On continuing you will accept terms and conditions.\nhttps://payzout.com/terms"
-        android:gravity="center"
-        app:linkModes="url"
-        android:layout_gravity="bottom|center"
-        app:urlColor="@color/colorButton"
-        android:layout_marginBottom="32dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:fontFamily="@font/montserrat"
-        android:textColor="@color/colorTextH2"/>
+    <!--    <com.tylersuehr.socialtextview.SocialTextView-->
+    <!--        android:id="@+id/stvTerms"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="On continuing you will accept terms and conditions.\nhttps://payzout.com/terms"-->
+    <!--        android:gravity="center"-->
+    <!--        app:linkModes="url"-->
+    <!--        android:layout_gravity="bottom|center"-->
+    <!--        app:urlColor="@color/colorButton"-->
+    <!--        android:layout_marginBottom="32dp"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:layout_marginEnd="16dp"-->
+    <!--        android:fontFamily="@font/montserrat"-->
+    <!--        android:textColor="@color/colorTextH2"/>-->
 
 
 </FrameLayout>

@@ -7,6 +7,7 @@
     <color name="colorButton">#1565C0</color>
     <color name="colorButtonDisable">#A4ACB1</color>
     <color name="colorTextH1">#222222</color>
+    <color name="colorTextH4">#EDECEC</color>
     <color name="colorTextH2">#888888</color>
     <color name="colorTextH3">#FFFFFF</color>
     <color name="colorEditTextBox">#F3ECEC</color>

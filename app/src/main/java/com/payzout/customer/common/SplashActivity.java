@@ -22,13 +22,11 @@ import com.payzout.customer.apis.APIClient;
 import com.payzout.customer.apis.CustomerInterface;
 import com.payzout.customer.auth.PhoneActivity;
 import com.payzout.customer.auth.model.CheckCustomer;
-import com.payzout.customer.lending.kyc.KycDocumentUploadActivity;
 import com.payzout.customer.lending.kyc.KycOnBoardActivity;
 import com.payzout.customer.lending.kyc.KycPendingActivity;
 import com.payzout.customer.lending.kyc.KycRejectedActivity;
 import com.payzout.customer.lending.main.LendingMainActivity;
 import com.payzout.customer.modules.kyc.KycActivity;
-import com.payzout.customer.modules.loan.PLActivity;
 import com.payzout.customer.utils.Constant;
 
 import retrofit2.Call;
@@ -52,9 +50,7 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        ImageView ivLogo = findViewById(R.id.ivLogo);
-        frameSplash = findViewById(R.id.frameSplash);
-        Glide.with(SplashActivity.this).load(R.drawable.payzout_full).into(ivLogo);
+
         firebaseAuth = FirebaseAuth.getInstance();
         customerInterface = APIClient.getRetrofitInstance().create(CustomerInterface.class);
         delay3000milli();
@@ -65,6 +61,9 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 checkPermission();
+//                Intent intent = new Intent(SplashActivity.this, OnBoardingActivity.class);
+//                startActivity(intent);
+//                finish();
             }
         }, 3000);
     }
@@ -101,6 +100,7 @@ public class SplashActivity extends AppCompatActivity {
 
             if (firebaseAuth.getCurrentUser() != null) {
                 checkUser(firebaseAuth.getCurrentUser().getUid());
+
             } else {
                 gotoLogin();
             }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.payzout.customer">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -20,8 +21,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
-        <activity android:name=".lending.kyc.KycSubmitForVerificationActivity"></activity>
+        android:usesCleartextTraffic="true"
+        tools:targetApi="m">
+        <activity android:name=".common.OnBoardingActivity" />
+        <activity android:name=".lending.kyc.KycSubmitForVerificationActivity" />
         <activity android:name=".lending.kyc.KycRejectedActivity" />
         <activity android:name=".lending.kyc.KycPendingActivity" />
         <activity android:name=".lending.main.LendingMainActivity" />

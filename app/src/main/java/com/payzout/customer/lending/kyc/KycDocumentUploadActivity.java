@@ -563,7 +563,7 @@ public class KycDocumentUploadActivity extends AppCompatActivity implements View
     private void formValidation() {
         if (selfieStatus && aadhaarFStatus && panStatus && aadhaarBStatus) {
             tvSubmitForReview.setEnabled(true);
-            tvSubmitForReview.setBackground(getResources().getDrawable(R.drawable.bg_button));
+            tvSubmitForReview.setBackground(getResources().getDrawable(R.drawable.btn_bg_gradient));
         } else {
             tvSubmitForReview.setBackground(getResources().getDrawable(R.drawable.bg_button_disabled));
             tvSubmitForReview.setEnabled(false);

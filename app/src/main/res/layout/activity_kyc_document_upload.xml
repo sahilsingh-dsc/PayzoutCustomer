@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#F2F2F2"
     android:id="@+id/lvDoc"
     tools:context=".lending.kyc.KycDocumentUploadActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:layout_height="100dp"
+        android:background="@drawable/header"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -21,27 +22,20 @@
             android:layout_height="56dp"
             android:background="?selectableItemBackground"
             android:padding="16dp"
+            android:layout_marginBottom="16dp"
             android:src="@drawable/ic_baseline_arrow_back_white_24" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
+            android:fontFamily="@font/montserrat"
             android:gravity="center"
+            android:layout_marginBottom="16dp"
             android:text="eKYC Documents"
             android:textColor="@color/colorTextH3"
-            android:textSize="16sp" />
+            android:textSize="20sp" />
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:fontFamily="@font/montserrat"
-        android:text="Please fill accurate information for faster credit assessment, inaccurate information may lead to rejection."
-        android:textColor="@color/colorTextH2"
-        android:textSize="12sp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -61,143 +55,138 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="Required Documents"
+                android:text="Identity Verification"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/montserrat"
-                android:text="Please provide required documents with accurate information for faster processing."/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
 
                 <com.google.android.material.card.MaterialCardView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/cardSelfie"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="4dp"
+
                     android:layout_weight="1">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:orientation="vertical">
+                        android:layout_height="100dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:text="Your Selfie"
+                            android:textColor="@color/colorTextH1"
+                            android:textSize="16sp"></TextView>
 
                         <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center">
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1">
 
 
                             <ImageView
                                 android:id="@+id/ivYourSelfie"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:layout_margin="8dp"
                                 android:layout_weight="1"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/ic_baseline_image_24" />
+                                android:src="@drawable/user_id" />
 
                             <ProgressBar
                                 android:id="@+id/progressPhoto"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:indeterminateDrawable="@drawable/progress"/>
+                                android:indeterminateDrawable="@drawable/progress"
+                                android:visibility="gone" />
 
                         </FrameLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="?android:attr/listDivider" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            android:gravity="center"
-                            android:padding="8dp"
-                            android:text="Your Selfie"
-                            android:textColor="@color/colorTextH1"
-                            android:textSize="12sp" />
-
                     </LinearLayout>
-
                 </com.google.android.material.card.MaterialCardView>
 
 
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
                 <com.google.android.material.card.MaterialCardView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/cardPan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginEnd="4dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
                     android:layout_weight="1">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:orientation="vertical">
+                        android:layout_height="100dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:text="Pan Card Front"
+                            android:textColor="@color/colorTextH1"
+                            android:textSize="16sp"></TextView>
 
                         <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center">
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1">
 
 
                             <ImageView
                                 android:id="@+id/ivPan"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:layout_margin="8dp"
                                 android:layout_weight="1"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/ic_baseline_image_24" />
+                                android:src="@drawable/pan_card" />
 
                             <ProgressBar
                                 android:id="@+id/progressPan"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:indeterminateDrawable="@drawable/progress"/>
+                                android:indeterminateDrawable="@drawable/progress"
+                                android:visibility="gone" />
 
                         </FrameLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="?android:attr/listDivider" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            android:gravity="center"
-                            android:padding="8dp"
-                            android:text="Pan Card"
-                            android:textColor="@color/colorTextH1"
-                            android:textSize="12sp" />
-
                     </LinearLayout>
-
                 </com.google.android.material.card.MaterialCardView>
-
 
             </LinearLayout>
 
@@ -205,130 +194,127 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <com.google.android.material.card.MaterialCardView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/cardAadhaarFront"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="4dp"
-                    android:layout_marginBottom="4dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
                     android:layout_weight="1">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:orientation="vertical">
+                        android:layout_height="100dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:text="Aadhar Card Front"
+                            android:textColor="@color/colorTextH1"
+                            android:textSize="16sp"></TextView>
 
                         <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center">
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1">
 
 
                             <ImageView
                                 android:id="@+id/ivAadhaarFront"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:layout_margin="8dp"
                                 android:layout_weight="1"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/ic_baseline_image_24" />
+                                android:src="@drawable/id_card" />
 
                             <ProgressBar
                                 android:id="@+id/progressFront"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:indeterminateDrawable="@drawable/progress"/>
+                                android:indeterminateDrawable="@drawable/progress"
+                                android:visibility="gone" />
 
                         </FrameLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="?android:attr/listDivider" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            android:gravity="center"
-                            android:padding="8dp"
-                            android:text="Aadhaar Card (Front)"
-                            android:textColor="@color/colorTextH1"
-                            android:textSize="12sp" />
-
                     </LinearLayout>
-
                 </com.google.android.material.card.MaterialCardView>
 
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical">
 
                 <com.google.android.material.card.MaterialCardView
+                    xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/cardAadhaarBack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="4dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="4dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="#FFFFFF"
                     android:layout_weight="1">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:orientation="vertical">
+                        android:layout_height="100dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="16dp"
+                            android:layout_weight="1"
+                            android:text="Aadhar Card Back"
+                            android:textColor="@color/colorTextH1"
+                            android:textSize="16sp"></TextView>
 
                         <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_gravity="center">
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="1">
 
 
                             <ImageView
                                 android:id="@+id/ivAadhaarBack"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
+                                android:layout_gravity="end"
+                                android:layout_margin="8dp"
                                 android:layout_weight="1"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/ic_baseline_image_24" />
+                                android:src="@drawable/id_card" />
 
                             <ProgressBar
                                 android:id="@+id/progressBack"
-                                android:visibility="gone"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
-                                android:indeterminateDrawable="@drawable/progress"/>
+                                android:indeterminateDrawable="@drawable/progress"
+                                android:visibility="gone" />
 
                         </FrameLayout>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="?android:attr/listDivider" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/montserrat"
-                            android:gravity="center"
-                            android:padding="8dp"
-                            android:text="Aadhaar Card (Back)"
-                            android:textColor="@color/colorTextH1"
-                            android:textSize="12sp" />
-
                     </LinearLayout>
-
                 </com.google.android.material.card.MaterialCardView>
 
-
             </LinearLayout>
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

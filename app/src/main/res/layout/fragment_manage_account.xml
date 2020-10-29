@@ -8,8 +8,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:layout_height="80dp"
+        android:background="@drawable/header"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -19,6 +19,8 @@
             android:layout_marginStart="16dp"
             android:layout_weight="1"
             android:fontFamily="@font/montserrat_bold"
+            android:layout_marginTop="12dp"
+            android:layout_gravity="top"
             android:gravity="center_vertical"
             android:text="Manage Account"
             android:textColor="@color/colorTextH3"
@@ -30,6 +32,7 @@
             android:layout_height="56dp"
             android:background="?selectableItemBackground"
             android:padding="16dp"
+            android:layout_gravity="top"
             android:src="@drawable/ic_baseline_help_outline_24" />
 
         <ImageView
@@ -38,6 +41,7 @@
             android:layout_height="56dp"
             android:background="?selectableItemBackground"
             android:padding="16dp"
+            android:layout_gravity="top"
             android:src="@drawable/ic_baseline_exit_to_app_24" />
 
     </LinearLayout>

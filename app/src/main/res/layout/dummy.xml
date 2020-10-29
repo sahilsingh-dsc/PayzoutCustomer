@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardAadhaarBack"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginBottom="4dp"
+    android:layout_weight="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            android:text="YOUR SELFIE"
+            android:textSize="16sp"></TextView>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+
+
+            <ImageView
+                android:id="@+id/ivAadhaarBack"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_baseline_image_24" />
+
+            <ProgressBar
+                android:id="@+id/progressBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminateDrawable="@drawable/progress"
+                android:visibility="gone" />
+
+        </FrameLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="100dp"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ivHome"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:src="@drawable/home_active" />
+
+            <TextView
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:text="Home"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ivLoan"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:src="@drawable/loan_active" />
+
+            <TextView
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:text="Loan"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ivRepayment"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:src="@drawable/return_active" />
+
+            <TextView
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:text="Repayment"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ivUser"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:src="@drawable/user_active" />
+
+            <TextView
+                android:fontFamily="@font/montserrat"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_width="match_parent"
+                android:text="Profile"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
+
+
+
+
+

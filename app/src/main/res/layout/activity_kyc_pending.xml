@@ -52,7 +52,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:layout_margin="16dp"
-        android:background="@drawable/bg_button"
+        android:background="@drawable/btn_bg_gradient"
         android:enabled="false"
         android:fontFamily="@font/montserrat_bold"
         android:gravity="center"

@@ -501,7 +501,7 @@ public class KycDetailsActivity extends AppCompatActivity implements View.OnClic
     private void formStatus() {
         if (fullNameStatus && dobStatus && emailStatus && educationStatus && languageStatus && addressStatus && stateStatus && cityStatus && pincodeStatus && companyStatus && monthlyStatus) {
             tvSubmitDetails.setEnabled(true);
-            tvSubmitDetails.setBackground(getResources().getDrawable(R.drawable.bg_button));
+            tvSubmitDetails.setBackground(getResources().getDrawable(R.drawable.btn_bg_gradient));
         } else {
             tvSubmitDetails.setEnabled(false);
             tvSubmitDetails.setBackground(getResources().getDrawable(R.drawable.bg_button_disabled));

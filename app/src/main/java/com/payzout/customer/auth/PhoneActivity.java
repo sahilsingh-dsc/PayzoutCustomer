@@ -21,7 +21,7 @@ import java.util.Objects;
 
 public class PhoneActivity extends AppCompatActivity implements SocialTextView.OnLinkClickListener, View.OnClickListener {
 
-    private SocialTextView stvTerms;
+ //   private SocialTextView stvTerms;
     private EditText etPhoneNumber;
     private TextView tvContinue;
 
@@ -36,8 +36,8 @@ public class PhoneActivity extends AppCompatActivity implements SocialTextView.O
     }
 
     private void initView() {
-        stvTerms = findViewById(R.id.stvTerms);
-        stvTerms.setOnLinkClickListener(this);
+//        stvTerms = findViewById(R.id.stvTerms);
+//        stvTerms.setOnLinkClickListener(this);
         etPhoneNumber = findViewById(R.id.etPhoneNumber);
         tvContinue = findViewById(R.id.tvContinue);
         tvContinue.setOnClickListener(this);

@@ -226,7 +226,7 @@ public class KycReferencesActivity extends AppCompatActivity implements View.OnC
     private void first() {
         if (spinner1 && spinner2 && name1 && name2 ) {
             tvReferencesProceed.setEnabled(true);
-            tvReferencesProceed.setBackground(getResources().getDrawable(R.drawable.bg_button));
+            tvReferencesProceed.setBackground(getResources().getDrawable(R.drawable.btn_bg_gradient));
         } else {
             tvReferencesProceed.setEnabled(false);
             tvReferencesProceed.setBackground(getResources().getDrawable(R.drawable.bg_button_disabled));

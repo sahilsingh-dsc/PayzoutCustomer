@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#f2f2f2"
     tools:context=".lending.kyc.KycOnBoardActivity">
 
     <FrameLayout
@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="120dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="8dp"
@@ -24,55 +24,85 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#145da0"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:text="Maximum Loan Amount"
+                        android:textColor="@color/colorTextH3"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center"
+                        android:text="@string/_50_000"
+                        android:textColor="@color/colorTextH3"
+                        android:textSize="30sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:gravity="center"
-                    android:text="Maximum Loan Amount"
-                    android:textColor="@color/colorTextH1"
-                    android:textSize="16sp" />
+                    android:orientation="vertical"
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:gravity="center"
-                    android:text="@string/_50_000"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="30sp" />
+                    >
 
+                    <TextView
+                        android:id="@+id/tvApplyNow"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:text="Apply Now"
+                        android:textAllCaps="true"
+                        android:textColor="#145da0"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
+
 
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/bg_curved_toolbar"
+            android:layout_height="80dp"
+            android:background="@drawable/header"
             android:orientation="vertical">
 
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="24dp"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:padding="24dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="top"
                     android:fontFamily="@font/montserrat_bold"
-                    android:gravity="center"
-                    android:layout_gravity="center"
+
+                    android:gravity="top"
                     android:text="Payzout"
+                    android:textAllCaps="true"
                     android:textColor="@color/colorTextH3"
-                    android:textSize="20sp" />
+                    android:textSize="16sp" />
 
             </FrameLayout>
 
@@ -81,177 +111,133 @@
 
     </FrameLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_weight="1"
-        android:src="@drawable/ic_undraw_deliveries_131a"/>
-
-    <TextView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:textSize="25sp"
-        android:gravity="center"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/colorPrimary"
-        android:text="money is for solving problems"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
-            android:textSize="14sp"
-            android:textColor="@color/colorTextH2"
-            android:text="Maximize your credit by repaying your loan on time"/>
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="12dp"
-            android:padding="4dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="4dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_baseline_assignment_24"
-                    android:layout_marginBottom="4dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Apply"
-                    android:gravity="center"
-                    android:textColor="@color/colorTextH1"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:textColor="@color/colorTextH2"
-                    android:textSize="10sp"
-                    android:text="100% digital"/>
-
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+                android:fontFamily="@font/montserrat"
+                android:text="Maximize your credit by repaying your loan on time"
+                android:textAlignment="center"
+                android:textColor="@color/colorTextH2"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="4dp"
-                android:orientation="vertical">
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:padding="4dp">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_baseline_timer_24"
-                    android:layout_marginBottom="4dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/colorTextH1"
-                    android:textSize="12sp"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Approve"/>
+                    android:orientation="vertical"
+                    android:padding="4dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/bg"
+                        android:padding="10dp"
+                        android:src="@drawable/upload" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:text="Submit Basic Information"
+                        android:textColor="@color/colorTextH1"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:textColor="@color/colorTextH2"
-                    android:textSize="10sp"
-                    android:text="5 minutes"/>
-
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_keyboard_arrow_right_24"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="4dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_baseline_monetization_on_24"
-                    android:layout_marginBottom="4dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorTextH1"
-                    android:textSize="12sp"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:fontFamily="@font/montserrat"
-                    android:text="Account"/>
+                    android:orientation="vertical"
+                    android:padding="4dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/bg"
+                        android:padding="10dp"
+                        android:src="@drawable/name" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:text="Complete Identity Certification"
+                        android:textColor="@color/colorTextH1"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:textColor="@color/colorTextH2"
-                    android:textSize="10sp"
-                    android:text="1 minutes"/>
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <ImageView
+                        android:layout_width="45dp"
+                        android:layout_height="45dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@drawable/bg"
+                        android:padding="10dp"
+                        android:src="@drawable/rupee" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:gravity="center"
+                        android:text="Apply Cash to Account"
+                        android:textColor="@color/colorTextH1"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvApplyNow"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/bg_button"
-        android:fontFamily="@font/montserrat_bold"
-        android:gravity="center"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:text="Apply Now"
-        android:textColor="@color/colorTextH3"
-        android:textSize="16sp" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
 
 </LinearLayout>
